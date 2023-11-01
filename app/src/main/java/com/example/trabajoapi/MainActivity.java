@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageView imageView = findViewById(R.id.imagen_principal);
-        String urlImagen = "https://png.pngtree.com/png-clipart/20210404/original/pngtree-metal-bitcoin-png-image_6200465.jpg";
+        String urlImagen = "https://assets.stickpng.com/images/58428ed0a6515b1e0ad75ab6.png";
 
         Glide.with(MainActivity.this)
                 .load(urlImagen).apply(new RequestOptions().centerCrop())
