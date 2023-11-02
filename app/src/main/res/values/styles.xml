@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SpinnerItemStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:background">@color/tarjetas</item>
+        <item name="android:textColor">@color/texto</item>
+    </style>
+</resources>

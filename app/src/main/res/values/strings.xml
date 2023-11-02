@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TrabajoAPI</string>
+    <string name="buscar">Buscar</string>
 </resources>

@@ -7,7 +7,6 @@
     android:background="@color/fondo"
     tools:context=".Buscador">
 
-
     <TextView
         android:id="@+id/titulo_buscador"
         android:layout_width="match_parent"
@@ -59,7 +58,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/boton_faboritos"
+            android:id="@+id/boton_favoritos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -73,14 +72,30 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="331dp"
-        android:layout_height="48dp"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:background="#564CAF50"
+        android:entries="@array/opciones_spinner"
+        android:spinnerMode="dialog"
+        android:theme="@style/SpinnerItemStyle"
         app:layout_constraintBottom_toTopOf="@+id/layout_botones"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo_buscador"
-        app:layout_constraintVertical_bias="0.229"
-        android:entries="@array/opciones_spinner" />
+        app:layout_constraintVertical_bias="0.230" />
 
+    <TextView
+        android:id="@+id/slogan_buscador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione entre nuestras opciones \nde búsqueda disponibles"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/texto"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Buscador"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            tools:ignore="UnusedAttribute"
+
+            />
+        <activity
+            android:name=".buscadores.BuscadorCrypto"
+            android:exported="true"
+            android:parentActivityName=".Buscador"
+            tools:ignore="UnusedAttribute"
+
+            />
+        <activity
+            android:name=".buscadores.BuscadorExchanges"
+            android:exported="true"
+            android:parentActivityName=".Buscador"
+            tools:ignore="UnusedAttribute"
+
+            />
+        <activity
+            android:name=".buscadores.BuscadorPrecios"
+            android:exported="true"
+            android:parentActivityName=".Buscador"
+            tools:ignore="UnusedAttribute"
+
+            />
+        <activity
+            android:name=".Favoritos"
+            android:exported="true"
+            android:parentActivityName=".buscadores.BuscadorCrypto"
+            tools:ignore="UnusedAttribute"
+
+            />
+
     </application>
 
 </manifest>

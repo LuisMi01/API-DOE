@@ -5,10 +5,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import android.content.Intent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,11 +26,30 @@ public class MainActivity extends AppCompatActivity {
                 .load(urlImagen).apply(new RequestOptions().centerCrop())
                 .into(imageView);
 
-        Button buscador = findViewById(R.id.boton_buscador);
-        buscador.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Buscador.class);
+
+
+
+
+        Button botonBuscador = findViewById(R.id.boton_home);
+        botonBuscador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Muestra un Toast cuando se pulsa el botón
+                Toast.makeText(MainActivity.this, "Ya se encuentra en la pantalla Home", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        findViewById(R.id.boton_buscador).setOnClickListener(view -> {
+            Intent intent = new Intent(this, Buscador.class);
             startActivity(intent);
         });
+
+        findViewById(R.id.boton_favoritos).setOnClickListener(view -> {
+            Intent intent = new Intent(this, Favoritos.class);
+            startActivity(intent);
+        });
+
+
     }
 
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="opciones_spinner">
+        <item>Seleccione una opcion</item>
         <item>Crypto</item>
         <item>Exchanges</item>
         <item>Precios</item>

@@ -4,19 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/fondo">
-
-
+    android:background="@color/fondo"
+    tools:context=".Favoritos">
 
 
     <TextView
-        android:id="@+id/titulo_principal"
+        android:id="@+id/titulo_favoritos"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:background="@color/tarjetas"
         android:gravity="center"
-        android:text="CoinWave"
+        android:text="Favoritos"
         android:textAlignment="center"
         android:textColor="@color/texto"
         android:textSize="50sp"
@@ -25,40 +23,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/slogan_principal"
-        android:text="Navega por el mundo de\n las criptomonedas con confianza"
-
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textColor="@color/texto"
-        android:textSize="20sp"
-        android:textStyle="bold"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_principal" />
-
-    <Button
-        android:id="@+id/boton_ranking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/botones"
-        android:text="Ranking de monedas"
-        android:textColor="@color/texto"
-        android:textSize="25sp"
-        android:textStyle="bold"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slogan_principal" />
-
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/layout_botones"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/tarjetas"
@@ -104,16 +70,5 @@
             android:textColor="@color/texto"
             android:textSize="15sp" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imagen_principal"
-        android:layout_width="290dp"
-        android:layout_height="278dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_ranking"
-        tools:srcCompat="@tools:sample/avatars" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
