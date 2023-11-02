@@ -49,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        findViewById(R.id.boton_ranking).setOnClickListener(view -> {
+            Intent intent = new Intent(this, Ranking.class);
+            startActivity(intent);
+        });
+
+
 
     }
 

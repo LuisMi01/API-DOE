@@ -57,6 +57,13 @@
             tools:ignore="UnusedAttribute"
 
             />
+        <activity
+            android:name=".Ranking"
+            android:exported="true"
+            android:parentActivityName=".buscadores.BuscadorCrypto"
+            tools:ignore="UnusedAttribute"
+
+            />
 
     </application>
 
