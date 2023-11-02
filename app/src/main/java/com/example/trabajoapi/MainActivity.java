@@ -3,6 +3,9 @@ package com.example.trabajoapi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import android.content.Intent;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import android.os.Bundle;
@@ -21,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
                 .load(urlImagen).apply(new RequestOptions().centerCrop())
                 .into(imageView);
 
+        Button buscador = findViewById(R.id.boton_buscador);
+        buscador.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Buscador.class);
+            startActivity(intent);
+        });
     }
 
 

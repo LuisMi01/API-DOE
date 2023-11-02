@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/layout_botones"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/tarjetas"
@@ -71,9 +71,16 @@
             android:textSize="15sp" />
     </LinearLayout>
 
-
-
-
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="331dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/layout_botones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador"
+        app:layout_constraintVertical_bias="0.229"
+        android:entries="@array/opciones_spinner" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
