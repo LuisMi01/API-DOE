@@ -1,4 +1,6 @@
-package com.example.trabajoapi;
+package com.example.trabajoapi.ranking;
+
+import com.example.trabajoapi.ranking.CryptoRankingPOJO;
 
 import java.util.List;
 

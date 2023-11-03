@@ -3,6 +3,7 @@ package com.example.trabajoapi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.trabajoapi.ranking.Ranking;
 
 import android.content.Intent;
 import android.view.View;

@@ -58,7 +58,7 @@
 
             />
         <activity
-            android:name=".Ranking"
+            android:name=".ranking.Ranking"
             android:exported="true"
             android:parentActivityName=".buscadores.BuscadorCrypto"
             tools:ignore="UnusedAttribute"

@@ -1,20 +1,18 @@
-package com.example.trabajoapi;
+package com.example.trabajoapi.ranking;
 
 public class CryptoRankingPOJO {
     private String name;
     private int score;
     private double price;
     private String image;
+    private boolean favorito = false;
 
-
-    public CryptoRankingPOJO(String name, int score, double price, String image) {
+    public CryptoRankingPOJO(String name, int score, double price, String image, boolean favorito) {
         this.name = name;
         this.score = score;
         this.price = price;
         this.image = image;
-    }
-
-    public CryptoRankingPOJO() {
+        this.favorito = favorito;
     }
 
     public String getName() {
@@ -49,14 +47,11 @@ public class CryptoRankingPOJO {
         this.image = image;
     }
 
+    public boolean isFavorito() {
+        return favorito;
+    }
 
-    @Override
-    public String toString() {
-        return "CryptoRankingPOJO{" +
-                "name='" + name + '\'' +
-                ", score=" + score +
-                ", price=" + price +
-                ", image='" + image + '\'' +
-                '}';
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
     }
 }
