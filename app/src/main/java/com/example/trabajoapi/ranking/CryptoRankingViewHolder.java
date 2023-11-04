@@ -1,6 +1,8 @@
 package com.example.trabajoapi.ranking;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -9,17 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabajoapi.R;
 
 public class CryptoRankingViewHolder extends RecyclerView.ViewHolder{
-    TextView tv_id_pokemon, tv_pokemonName, tv_type, tv_height, tv_weight, tv_others;
+    TextView nombre_moneda, score_moneda, precio_moneda;
+    ImageView imagen_moneda;
+    Button boton_favorito;
 
     public CryptoRankingViewHolder(@NonNull View itemView) {
         super(itemView);
-        tv_id_pokemon  = itemView.findViewById(R.id.id_pokemon);
-        tv_pokemonName = itemView.findViewById(R.id.name);
-        tv_type        = itemView.findViewById(R.id.type);
-        tv_height      = itemView.findViewById(R.id.height);
-        tv_weight      = itemView.findViewById(R.id.weight);
-        tv_others      = itemView.findViewById(R.id.others);
+        nombre_moneda = itemView.findViewById(R.id.nombre_moneda);
+        score_moneda = itemView.findViewById(R.id.score_moneda);
+        precio_moneda = itemView.findViewById(R.id.precio_moneda);
+        imagen_moneda = itemView.findViewById(R.id.imagen_moneda);
+        boton_favorito = itemView.findViewById(R.id.boton_favorito);
     }
-
-
 }
