@@ -71,7 +71,7 @@
     </LinearLayout>
 
 
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:orientation="vertical"
@@ -79,15 +79,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_crypto"
-            android:id="@+id/layout_ranking">
+            android:id="@+id/cajon_moneda">
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:ignore="ScrollViewSize"
-                android:id="@+id/cajon_moneda"/>
-        </ScrollView>
+        </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

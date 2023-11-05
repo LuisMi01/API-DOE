@@ -5,7 +5,7 @@ public class CryptoRankingPOJO {
     private int score;
     private double price;
     private String image;
-    private boolean favorito = false;
+    private boolean favorito;
 
     public CryptoRankingPOJO(String name, int score, double price, String image, boolean favorito) {
         this.name = name;
