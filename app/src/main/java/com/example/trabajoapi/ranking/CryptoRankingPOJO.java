@@ -1,9 +1,14 @@
 package com.example.trabajoapi.ranking;
 
+import androidx.annotation.NonNull;
+
+import java.util.List;
+
 public class CryptoRankingPOJO {
     private String name;
     private int score;
     private double price;
+
     private String image;
     private boolean favorito;
 
@@ -13,6 +18,8 @@ public class CryptoRankingPOJO {
         this.price = price;
         this.image = image;
         this.favorito = favorito;
+    }
+    public CryptoRankingPOJO() {
     }
 
     public String getName() {
@@ -54,4 +61,14 @@ public class CryptoRankingPOJO {
     public void setFavorito(boolean favorito) {
         this.favorito = favorito;
     }
+
+  /*  private List<CryptoRankingPOJO> coins;
+
+    public List<CryptoRankingPOJO> getCoins() {
+        return coins;
+    }
+
+    public void setCoins(List<CryptoRankingPOJO> coins) {
+        this.coins = coins;
+    }*/
 }

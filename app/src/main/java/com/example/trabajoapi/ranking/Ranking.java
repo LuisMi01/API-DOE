@@ -1,5 +1,6 @@
 package com.example.trabajoapi.ranking;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ public class Ranking extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
+    private CryptoRankingAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,35 +30,37 @@ public class Ranking extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.cajon_moneda);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
 
-        fetchMonedas();
+        adapter = new CryptoRankingAdapter(new ArrayList<>());
+        recyclerView.setAdapter(adapter);
+        fetchCryptoRanking();
+
     }
 
-    private void fetchMonedas() {
+    private void fetchCryptoRanking() {
         CoinGekoApi apiService = APIClient.getRetrofit().create(CoinGekoApi.class);
-        Call<CryptoDataResponse> call = apiService.getTrendingCryptos();
-
-        call.enqueue(new Callback<CryptoDataResponse>() {
+        Call<CoinGeckoResponse> call = apiService.getCoins();
+        call.enqueue(new Callback<CoinGeckoResponse>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
-            public void onResponse(@NonNull Call<CryptoDataResponse> call, @NonNull Response<CryptoDataResponse> response) {
-                if( response.isSuccessful() ) {
-                    CryptoDataResponse cryptoDataResponse = response.body();
-                    List<CryptoRankingPOJO> cryptoRankingPOJOList = new ArrayList<>();
-                    if (cryptoDataResponse != null) {
-                        cryptoRankingPOJOList = cryptoDataResponse.getCoins();
-                    }
-                    CryptoRankingAdapter adapter = new CryptoRankingAdapter(cryptoRankingPOJOList);
+            public void onResponse(Call<CoinGeckoResponse> call, Response<CoinGeckoResponse> response) {
+                if (response.isSuccessful()) {
+                    CoinGeckoResponse coinGeckoResponse = response.body();
+                    List<CryptoRankingPOJO> cryptoRankings = coinGeckoResponse.getCoins();
+                    // Procesa y muestra los datos en la interfaz de usuario utilizando tu adaptador
+                    adapter = new CryptoRankingAdapter(cryptoRankings);
                     recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                 } else {
-                    Log.e("RESPUESTA", "Error en la respuesta: " + response.code());
+                    Log.e("MAINACTIVITY_CONSUMOAPI", "Error en la respuesta: " + response.code());
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<CryptoDataResponse> call, @NonNull Throwable t) {
+            public void onFailure(Call<CoinGeckoResponse> call, Throwable t) {
+                // Maneja errores de la solicitud
+
                 Toast.makeText(Ranking.this, "Error en la petición", Toast.LENGTH_LONG).show();
-                Log.e("SOLICITUD", "Error en la solicitud: ", t);
             }
         });
 

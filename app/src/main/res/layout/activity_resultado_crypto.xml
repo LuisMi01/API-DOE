@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".buscadores.BuscadorCrypto"
+    android:background="@color/fondo">
+
+    <TextView
+        android:id="@+id/titulo_buscador_crypto"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@color/tarjetas"
+        android:gravity="center"
+        android:text="nombre_crypto"
+        android:textAlignment="center"
+        android:textColor="@color/texto"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/tarjetas"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/boton_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/botones"
+            android:text="Home"
+            android:textColor="@color/texto"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/boton_buscador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/botones"
+            android:text="Buscador"
+            android:textColor="@color/texto"
+
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/boton_favoritos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/botones"
+            android:text="Favoritos"
+
+            android:textColor="@color/texto"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_izq_resultado_crypto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_crypto">
+
+
+        <TextView
+            android:id="@+id/fecha_salida_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="fecha_salida"
+            android:textColor="@color/texto"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/valor_moneda_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="valor_moneda"
+            android:textColor="@color/texto"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/link_web_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="link_web"
+            android:textColor="@color/texto"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+
+        <ImageButton
+            android:id="@+id/boton_anadir_favoritos_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/btn_star_big_on"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_der_resultado_crypto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_crypto">
+
+        <ImageView
+            android:id="@+id/imagen_id_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars"
+            android:padding="10dp"
+            android:layout_margin="10dp" />
+
+        <ImageButton
+            android:id="@+id/boton_compartir_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_share"
+            android:padding="10dp"
+            android:layout_margin="10dp"/>
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/descripcion_id_crypto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="descripcion_crypto"
+            android:textColor="@color/texto"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:orientation="vertical" />
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
