@@ -2,19 +2,19 @@ package com.example.trabajoapi.resultadosBuscadores.resultadoCrypto;
 
 public class CryptoBuscadorPOJO {
     private String name;
-    private String image;
-    private String genesis_date;
-    private String current_price;
-    private String homepage;
+    private String genesisDate;
     private String description;
+    private double currentPrice;
+    private String homepageUrl;
+    private String imageUrl;
 
-    public CryptoBuscadorPOJO(String name, String image, String genesis_date, String current_price, String homepage, String description) {
+    public CryptoBuscadorPOJO(String name, String genesisDate, String description, double currentPrice, String homepageUrl, String imageUrl) {
         this.name = name;
-        this.image = image;
-        this.genesis_date = genesis_date;
-        this.current_price = current_price;
-        this.homepage = homepage;
+        this.genesisDate = genesisDate;
         this.description = description;
+        this.currentPrice = currentPrice;
+        this.homepageUrl = homepageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -25,36 +25,12 @@ public class CryptoBuscadorPOJO {
         this.name = name;
     }
 
-    public String getImage() {
-        return image;
+    public String getGenesisDate() {
+        return genesisDate;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getGenesis_date() {
-        return genesis_date;
-    }
-
-    public void setGenesis_date(String genesis_date) {
-        this.genesis_date = genesis_date;
-    }
-
-    public String getCurrent_price() {
-        return current_price;
-    }
-
-    public void setCurrent_price(String current_price) {
-        this.current_price = current_price;
-    }
-
-    public String getHomepage() {
-        return homepage;
-    }
-
-    public void setHomepage(String homepage) {
-        this.homepage = homepage;
+    public void setGenesisDate(String genesisDate) {
+        this.genesisDate = genesisDate;
     }
 
     public String getDescription() {
@@ -65,6 +41,27 @@ public class CryptoBuscadorPOJO {
         this.description = description;
     }
 
-    public CryptoBuscadorPOJO() {
+    public double getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
+    public String getHomepageUrl() {
+        return homepageUrl;
+    }
+
+    public void setHomepageUrl(String homepageUrl) {
+        this.homepageUrl = homepageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

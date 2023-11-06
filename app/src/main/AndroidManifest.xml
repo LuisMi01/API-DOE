@@ -64,6 +64,29 @@
             tools:ignore="UnusedAttribute"
 
             />
+        <activity
+            android:name=".resultadosBuscadores.resultadoCrypto.ResultadoCrypto"
+            android:exported="true"
+            android:parentActivityName=".buscadores.BuscadorCrypto"
+            tools:ignore="UnusedAttribute"
+
+            />
+        <activity
+            android:name=".resultadosBuscadores.resultadosExchange.ResultadoExchange"
+            android:exported="true"
+            android:parentActivityName=".buscadores.BuscadorPrecios"
+            tools:ignore="UnusedAttribute"
+
+            />
+
+        <activity
+            android:name=".resultadosBuscadores.resultadoPrecios.ResultadoPrecios"
+            android:exported="true"
+            android:parentActivityName=".buscadores.BuscadorPrecios"
+            tools:ignore="UnusedAttribute"
+
+            />
+
 
     </application>
 

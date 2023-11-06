@@ -2,6 +2,8 @@ package com.example.trabajoapi.buscadores;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.trabajoapi.Buscador;
@@ -33,18 +35,10 @@ public class BuscadorCrypto extends AppCompatActivity{
             });
 
             TextInputEditText texto = findViewById(R.id.input_buscador_crypto);
-
-
-            if(texto.getText().toString().equals("")){
-                texto.setError("Introduce una moneda");
-            }
-            else{
-                findViewById(R.id.boton_buscador_crypto).setOnClickListener(view -> {
-                    Intent intent = new Intent(this, ResultadoCrypto.class);
-                    startActivity(intent);
-                });
-            }
-
+            findViewById(R.id.boton_buscador_crypto).setOnClickListener(view -> {
+                Intent intent = new Intent(this, ResultadoCrypto.class);
+                startActivity(intent);
+            });
 
 
 

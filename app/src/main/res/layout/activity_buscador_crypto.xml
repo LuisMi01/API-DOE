@@ -84,25 +84,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_crypto" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_buscador_crypto"
-        android:layout_width="330dp"
-        android:layout_height="70dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_crypto"
-        app:layout_constraintVertical_bias="0.230"
-        android:background="@color/tarjetas">
-
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/input_buscador_crypto"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_crypto"
+            app:layout_constraintVertical_bias="0.230"
+            android:layout_width="330dp"
+            android:layout_height="70dp"
             android:hint="Moneda"
+            android:padding="10dp"
             android:background="@color/tarjetas"
             android:textColor="@color/texto"
             android:textColorHint="@color/texto_secundario"/>
-    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/boton_buscador_crypto"
