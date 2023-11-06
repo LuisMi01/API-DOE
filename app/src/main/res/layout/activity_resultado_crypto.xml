@@ -153,6 +153,7 @@
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxHeight="100dp"
@@ -165,13 +166,13 @@
             android:id="@+id/descripcion_crypto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="10dp"
             android:text="descripcion"
             android:textColor="@color/texto"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:padding="10dp"
-            android:layout_margin="10dp"/>
+            android:textStyle="bold" />
     </ScrollView>
 
 

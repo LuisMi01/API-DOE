@@ -1,7 +1,11 @@
 package com.example.trabajoapi.resultadosBuscadores.resultadoCrypto;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
@@ -19,58 +23,48 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ResultadoCrypto extends AppCompatActivity {
-    private TextView nameTextView;
-    private TextView genesisDateTextView;
-    private TextView descriptionTextView;
-    private TextView currentPriceTextView;
-    private TextView homepageUrlTextView;
-    private ImageView imageView;
+    private TextView nombbreCrypto;
+    private TextView fechaCreacion;
+    private CryptoApi apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultado_crypto);
 
-        nameTextView = findViewById(R.id.titulo_buscador_crypto);
-        genesisDateTextView = findViewById(R.id.fecha_salida_crypto);
-        descriptionTextView = findViewById(R.id.descripcion_crypto);
-        currentPriceTextView = findViewById(R.id.valor_moneda_crypto);
-        homepageUrlTextView = findViewById(R.id.link_web_crypto);
-        imageView = findViewById(R.id.imagen_id_crypto);
+        obtenerDatosCrypto();
 
+    }
+    public void obtenerDatosCrypto() {
+        nombbreCrypto = findViewById(R.id.titulo_buscador_crypto);
+        fechaCreacion = findViewById(R.id.fecha_salida_crypto);
         // Configura Retrofit
-        CryptoApi apiService = APIClient.getRetrofit().create(CryptoApi.class);
-        Call<List<CryptoBuscadorPOJO>> call = apiService.detallesMonedaBuscador();
 
-        // Realiza la solicitud a la API
-        call.enqueue(new Callback<List<CryptoBuscadorPOJO>>() {
+        apiService = APIClient.getRetrofit().create(CryptoApi.class);
+
+        // Realizar una solicitud a la API
+        String CryptoResultadoID = "bitcoin";
+        Call<CryptoBuscadorPOJO> call = apiService.detallesMonedaBuscador(CryptoResultadoID);
+        call.enqueue(new Callback<CryptoBuscadorPOJO>() {
             @Override
-            public void onResponse(Call<List<CryptoBuscadorPOJO>> call, Response<List<CryptoBuscadorPOJO>> response) {
+            public void onResponse(Call<CryptoBuscadorPOJO> call, Response<CryptoBuscadorPOJO> response) {
                 if (response.isSuccessful()) {
-                   List<CryptoBuscadorPOJO> cryptoCurrency = response.body();
-
-                    // Muestra los datos en las vistas
-                    nameTextView.setText(cryptoCurrency);
-                    genesisDateTextView.setText(cryptoCurrency.getGenesisDate());
-                    descriptionTextView.setText(cryptoCurrency.getDescription());
-                    currentPriceTextView.setText("$" + cryptoCurrency.getCurrentPrice());
-                    homepageUrlTextView.setText(cryptoCurrency.getHomepageUrl());
-
-                    // Carga la imagen con Glide
-                    String imageUrl = cryptoCurrency.getImageUrl();
-                    Glide.with(ResultadoCrypto.this)
-                            .load(imageUrl)
-                            .into(imageView);
+                    CryptoBuscadorPOJO datosCrypto = response.body();
+                    if (datosCrypto != null) {
+                        nombbreCrypto.setText(datosCrypto.getName());
+                        fechaCreacion.setText("Fecha de creacion:\n" + datosCrypto.getGenesis_date());
+                    }
                 } else {
-                    // Manejo de errores de la API
-
+                    nombbreCrypto.setText("Error en la solicitud.");
                 }
+
             }
 
             @Override
-            public void onFailure(Call<List<CryptoBuscadorPOJO>> call, Throwable t) {
-                // Manejo de errores de red
+            public void onFailure(Call<CryptoBuscadorPOJO> call, Throwable t) {
+                Log.e("ERROR", t.getMessage());
             }
         });
     }
+
 }
