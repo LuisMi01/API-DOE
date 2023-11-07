@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo"
-    tools:context=".buscadores.BuscadorPrecios">
+    tools:context=".buscadores.buscadorNft.BuscadorNft">
 
     <TextView
         android:id="@+id/titulo_buscador_precios"
@@ -13,7 +13,7 @@
         android:layout_height="130dp"
         android:background="@color/tarjetas"
         android:gravity="center"
-        android:text="Buscador\nPrecios"
+        android:text="NFTs"
         android:textAlignment="center"
         android:textColor="@color/texto"
         android:textSize="50sp"
@@ -71,76 +71,27 @@
     </LinearLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_buscador_precios_1"
-        android:layout_width="330dp"
-        android:layout_height="70dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_precios"
-        app:layout_constraintVertical_bias="0.230"
-        android:background="@color/tarjetas">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Primera Moneda"
-            android:background="@color/tarjetas"
-            android:textColor="@color/texto"
-            android:textColorHint="@color/texto_secundario"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_buscador_precios_2"
-        android:layout_width="330dp"
-        android:layout_height="70dp"
-        android:background="@color/tarjetas"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_buscador_precios_1"
-        app:layout_constraintVertical_bias="0.130">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/tarjetas"
-            android:hint="Segunda Moneda"
-            android:textColor="@color/texto"
-            android:textColorHint="@color/texto_secundario" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/boton_buscador_precios"
-        android:text="@string/buscar"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_buscador_precios_2"
-        app:layout_constraintVertical_bias="0.150"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/botones"
-        android:textColor="@color/texto"
-        android:textSize="15sp" />
-
     <TextView
         android:id="@+id/slogan_buscador_precios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Inserte las monedas con las que \nquieres comprar el precio"
+        android:text="Aqui encontrara una lista \n de los NFTs disponibles\n en la aplicacion."
         android:textColor="@color/texto"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/input_buscador_precios_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_precios" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_lista_nft"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan_buscador_precios" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

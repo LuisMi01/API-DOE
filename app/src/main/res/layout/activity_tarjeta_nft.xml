@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/tarjetas"
+    tools:context=".buscadores.buscadorNft.BuscadorNft">
+
+    <TextView
+        android:id="@+id/id_buscador_nft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="id_nft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/texto"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_margin="25dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/simbolo_buscador_nft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:padding="10dp"
+        android:text="simbolo_nft"
+        android:textColor="@color/texto"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_buscador_nft"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/asset_platform_buscador_nft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:padding="10dp"
+        android:text="asset_platform"
+        android:textColor="@color/texto"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/contract_address_buscador_nft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_buscador_nft" />
+
+    <TextView
+        android:id="@+id/contract_address_buscador_nft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="contract_address"
+        app:layout_constraintBottom_toTopOf="@+id/boton_buscador_nft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/texto"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_margin="25dp"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/boton_buscador_nft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Más detalles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/botones"
+        android:textColor="@color/texto"
+        android:textSize="15sp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

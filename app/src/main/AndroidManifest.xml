@@ -44,7 +44,7 @@
 
             />
         <activity
-            android:name=".buscadores.BuscadorPrecios"
+            android:name=".buscadores.buscadorNft.BuscadorNft"
             android:exported="true"
             android:parentActivityName=".Buscador"
             tools:ignore="UnusedAttribute"
@@ -74,15 +74,15 @@
         <activity
             android:name=".resultadosBuscadores.resultadosExchange.ResultadoExchange"
             android:exported="true"
-            android:parentActivityName=".buscadores.BuscadorPrecios"
+            android:parentActivityName=".buscadores.buscadorNft.BuscadorNft"
             tools:ignore="UnusedAttribute"
 
             />
 
         <activity
-            android:name=".resultadosBuscadores.resultadoPrecios.ResultadoPrecios"
+            android:name=".resultadosBuscadores.resultadoNft.ResultadoNft"
             android:exported="true"
-            android:parentActivityName=".buscadores.BuscadorPrecios"
+            android:parentActivityName=".buscadores.buscadorNft.BuscadorNft"
             tools:ignore="UnusedAttribute"
 
             />
