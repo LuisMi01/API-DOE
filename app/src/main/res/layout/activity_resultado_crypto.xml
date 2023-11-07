@@ -23,53 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/tarjetas"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/boton_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/botones"
-            android:text="Home"
-            android:textColor="@color/texto"
-            android:textSize="15sp" />
-
-        <Button
-            android:id="@+id/boton_buscador"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/botones"
-            android:text="Buscador"
-            android:textColor="@color/texto"
-
-            android:textSize="15sp" />
-
-        <Button
-            android:id="@+id/boton_favoritos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/botones"
-            android:text="Favoritos"
-
-            android:textColor="@color/texto"
-            android:textSize="15sp" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_izq_resultado_crypto"
@@ -172,8 +126,56 @@
             android:textColor="@color/texto"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:maxHeight="100dp"/>
+            />
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/tarjetas"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/boton_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/botones"
+            android:text="Home"
+            android:textColor="@color/texto"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/boton_buscador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/botones"
+            android:text="Buscador"
+            android:textColor="@color/texto"
+
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/boton_favoritos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/botones"
+            android:text="Favoritos"
+
+            android:textColor="@color/texto"
+            android:textSize="15sp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

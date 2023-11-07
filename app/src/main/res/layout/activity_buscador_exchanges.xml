@@ -71,25 +71,20 @@
             android:textSize="15sp" />
     </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_buscador_exchanges"
-        android:layout_width="330dp"
-        android:layout_height="70dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_exchanges"
-        app:layout_constraintVertical_bias="0.230"
-        android:background="@color/tarjetas">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Exchange"
-            android:background="@color/tarjetas"
-            android:textColor="@color/texto"
-            android:textColorHint="@color/texto_secundario"/>
-    </com.google.android.material.textfield.TextInputLayout>
+     <com.google.android.material.textfield.TextInputEditText
+         android:layout_width="330dp"
+         android:layout_height="70dp"
+         android:hint="Exchange"
+         android:textColor="@color/texto"
+         android:textColorHint="@color/texto_secundario"
+         android:id="@+id/input_buscador_exchanges"
+         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_exchanges"
+         app:layout_constraintVertical_bias="0.230"
+         android:background="@color/tarjetas"
+         android:padding="10dp"/>
 
     <Button
         android:id="@+id/boton_buscador_exchanges"

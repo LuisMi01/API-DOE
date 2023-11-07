@@ -4,12 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.trabajoapi.APIClient;
+import com.example.trabajoapi.Buscador;
+import com.example.trabajoapi.Favoritos;
+import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
 import com.example.trabajoapi.ranking.CoinGeckoResponse;
 import com.example.trabajoapi.ranking.CoinGekoApi;
@@ -39,7 +43,22 @@ private ImageView imagenCrypto;
 
         obtenerDatosCrypto();
 
+        findViewById(R.id.boton_home).setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.boton_buscador).setOnClickListener(view -> {
+            Intent intent = new Intent(this, Buscador.class);
+            startActivity(intent);
+        });
+        findViewById(R.id.boton_favoritos).setOnClickListener(view -> {
+            Intent intent = new Intent(this, Favoritos.class);
+            startActivity(intent);
+        });
+
     }
+
     public void obtenerDatosCrypto() {
         nombbreCrypto = findViewById(R.id.titulo_buscador_crypto);
         fechaCreacion = findViewById(R.id.fecha_salida_crypto);
@@ -52,8 +71,8 @@ private ImageView imagenCrypto;
         apiService = APIClient.getRetrofit().create(CryptoApi.class);
 
         // Realizar una solicitud a la API
-        String CryptoResultadoID = "bitcoin";
-        Call<CryptoBuscadorPOJO> call = apiService.detallesMonedaBuscador(CryptoResultadoID);
+        String cryptoId = getIntent().getStringExtra("cryptoId");
+        Call<CryptoBuscadorPOJO> call = apiService.detallesMonedaBuscador(cryptoId);
         call.enqueue(new Callback<CryptoBuscadorPOJO>() {
             @Override
             public void onResponse(Call<CryptoBuscadorPOJO> call, Response<CryptoBuscadorPOJO> response) {
@@ -86,7 +105,6 @@ private ImageView imagenCrypto;
                 } else {
                     nombbreCrypto.setText("Error en la solicitud.");
                 }
-
             }
 
             @Override

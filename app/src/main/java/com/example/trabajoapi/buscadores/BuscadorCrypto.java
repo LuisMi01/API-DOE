@@ -34,15 +34,22 @@ public class BuscadorCrypto extends AppCompatActivity{
                 startActivity(intent);
             });
 
+
             TextInputEditText texto = findViewById(R.id.input_buscador_crypto);
             findViewById(R.id.boton_buscador_crypto).setOnClickListener(view -> {
-                Intent intent = new Intent(this, ResultadoCrypto.class);
-                startActivity(intent);
+                String userInput = texto.getText().toString();
+
+                // Verifica si el campo de entrada no está vacío antes de continuar
+                if (!userInput.isEmpty()) {
+                    // Crea una nueva intención y pasa el valor de entrada del usuario a la actividad ResultadoCrypto
+                    Intent intent = new Intent(this, ResultadoCrypto.class);
+                    intent.putExtra("cryptoId", userInput);
+                    startActivity(intent);
+                } else {
+                    // Muestra un mensaje de error al usuario si el campo está vacío
+                    Toast.makeText(this, "Por favor, ingresa una moneda", Toast.LENGTH_LONG).show();
+                }
             });
-
-
-
-
 
         }
 }

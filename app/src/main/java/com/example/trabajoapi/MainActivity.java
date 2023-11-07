@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     MainActivityPOJO pokemon = response.body();
                     if (pokemon != null) {
-                        ping.setText("Estado de la API: " + pokemon.getGecko_says() );
+                        ping.setText("Versión de la API: " + pokemon.getGecko_says() );
                     }
                 } else {
                     ping.setText("Error en la solicitud.");
