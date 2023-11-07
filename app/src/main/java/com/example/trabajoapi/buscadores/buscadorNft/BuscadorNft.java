@@ -43,8 +43,6 @@ public class BuscadorNft extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // No es necesario inicializar el adaptador aquí.
-
         obtenerNfts();
     }
 

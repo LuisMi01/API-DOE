@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/tarjetas"
-    tools:context=".buscadores.buscadorNft.BuscadorNft">
+    android:background="@drawable/bordes_color_resalto"
+    tools:context=".buscadores.buscadorNft.BuscadorNft"
+    android:layout_margin="20dp"
+    >
 
     <TextView
         android:id="@+id/id_buscador_nft"
@@ -18,7 +20,8 @@
         android:textStyle="bold"
         android:padding="10dp"
         android:layout_margin="25dp"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/simbolo_buscador_nft"
@@ -32,7 +35,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/id_buscador_nft"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/asset_platform_buscador_nft"
@@ -44,6 +48,7 @@
         android:textColor="@color/texto"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/contract_address_buscador_nft"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +66,7 @@
         android:textColor="@color/texto"
         android:textStyle="bold"
         android:padding="10dp"
+        android:gravity="center"
         android:layout_margin="25dp"
         android:textSize="20dp"/>
 

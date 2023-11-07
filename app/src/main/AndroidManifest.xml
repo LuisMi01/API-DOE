@@ -80,7 +80,7 @@
             />
 
         <activity
-            android:name=".resultadosBuscadores.resultadoNft.ResultadoNft"
+            android:name=".resultadosBuscadores.resultadoNft.nftDetalle.NftDetalle"
             android:exported="true"
             android:parentActivityName=".buscadores.buscadorNft.BuscadorNft"
             tools:ignore="UnusedAttribute"

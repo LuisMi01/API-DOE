@@ -7,6 +7,17 @@
     android:background="@color/fondo"
     tools:context=".buscadores.buscadorNft.BuscadorNft">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_lista_nft"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan_buscador_nft"
+        android:layout_margin="10dp"
+        android:padding="10dp"/>
+
     <TextView
         android:id="@+id/titulo_buscador_precios"
         android:layout_width="match_parent"
@@ -72,7 +83,7 @@
 
 
     <TextView
-        android:id="@+id/slogan_buscador_precios"
+        android:id="@+id/slogan_buscador_nft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -82,16 +93,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_precios" />
+        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_precios"
+        android:padding="10dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler_lista_nft"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slogan_buscador_precios" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
