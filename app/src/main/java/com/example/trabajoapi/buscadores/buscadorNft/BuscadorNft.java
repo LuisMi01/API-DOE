@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabajoapi.APIClient;
 import com.example.trabajoapi.Buscador;
-import com.example.trabajoapi.Favoritos;
+import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
 import java.util.List;

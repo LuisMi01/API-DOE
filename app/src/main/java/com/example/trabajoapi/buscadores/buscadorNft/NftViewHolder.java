@@ -23,7 +23,6 @@ public  class NftViewHolder extends RecyclerView.ViewHolder {
             textViewContract = itemView.findViewById(R.id.contract_address_buscador_nft);
             textViewPlatform = itemView.findViewById(R.id.asset_platform_buscador_nft);
             masDetalles = itemView.findViewById(R.id.boton_buscador_nft);
-
         }
 
 }

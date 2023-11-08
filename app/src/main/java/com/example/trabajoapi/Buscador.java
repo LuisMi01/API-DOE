@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.trabajoapi.buscadores.BuscadorCrypto;
 import com.example.trabajoapi.buscadores.BuscadorExchanges;
 import com.example.trabajoapi.buscadores.buscadorNft.BuscadorNft;
+import com.example.trabajoapi.dataBase.Favoritos;
 
 public class Buscador extends AppCompatActivity {
 

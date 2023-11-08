@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.trabajoapi.Buscador;
-import com.example.trabajoapi.Favoritos;
+import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
 import com.example.trabajoapi.resultadosBuscadores.resultadosExchange.ResultadoExchange;

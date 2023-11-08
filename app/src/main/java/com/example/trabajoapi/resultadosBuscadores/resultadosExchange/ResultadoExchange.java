@@ -12,11 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.trabajoapi.APIClient;
 import com.example.trabajoapi.Buscador;
-import com.example.trabajoapi.Favoritos;
+import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
 import com.example.trabajoapi.RepresentacionWebView;
-import com.example.trabajoapi.resultadosBuscadores.resultadoCrypto.ResultadoCrypto;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -6,6 +6,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.trabajoapi.dataBase.Favoritos;
+
 public class RepresentacionWebView extends AppCompatActivity {
     private WebView webView;
 

@@ -7,12 +7,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.example.trabajoapi.APIClient;
 import com.example.trabajoapi.Buscador;
-import com.example.trabajoapi.Favoritos;
+import com.example.trabajoapi.dataBase.DataBaseHelper;
+import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
 import com.example.trabajoapi.RepresentacionWebView;
@@ -24,12 +28,14 @@ import retrofit2.Response;
 public class ResultadoCrypto extends AppCompatActivity {
     private TextView nombbreCrypto;
     private TextView fechaCreacion;
-
+    private ImageButton botonFavoritos;
     private TextView precioCrypto;
     private TextView descripcionCrypto;
     private Button webCrypto;
     private ImageView imagenCrypto;
     private CryptoApi apiService;
+    private CryptoBuscadorPOJO currentCrypto;
+    private boolean isFavorite = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,7 @@ public class ResultadoCrypto extends AppCompatActivity {
         precioCrypto = findViewById(R.id.valor_moneda_crypto);
         webCrypto = findViewById(R.id.link_web_crypto);
         imagenCrypto = findViewById(R.id.imagen_id_crypto);
+        botonFavoritos = findViewById(R.id.boton_anadir_favoritos_crypto);
         // Configura Retrofit
 
         apiService = APIClient.getRetrofit().create(CryptoApi.class);
@@ -108,6 +115,21 @@ public class ResultadoCrypto extends AppCompatActivity {
             @Override
             public void onFailure(Call<CryptoBuscadorPOJO> call, Throwable t) {
                 Log.e("ERROR", t.getMessage());
+            }
+        });
+
+        botonFavoritos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataBaseHelper db = new DataBaseHelper(ResultadoCrypto.this);
+                isFavorite = db.isFavorite(currentCrypto.getName());
+                if (isFavorite) {
+                    db.unmarkAsFavorite(currentCrypto.getName());
+                    Toast.makeText(ResultadoCrypto.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+                } else {
+                    db.markAsFavorite(currentCrypto.getName());
+                    Toast.makeText(ResultadoCrypto.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

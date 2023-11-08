@@ -2,22 +2,18 @@ package com.example.trabajoapi.resultadosBuscadores.resultadoNft.nftDetalle;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.trabajoapi.APIClient;
 import com.example.trabajoapi.Buscador;
-import com.example.trabajoapi.Favoritos;
+import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
-import com.example.trabajoapi.resultadosBuscadores.resultadosExchange.ExchangeBuscadorPOJO;
-import com.example.trabajoapi.resultadosBuscadores.resultadosExchange.ResultadoExchange;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,5 +1,6 @@
 package com.example.trabajoapi.ranking;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.trabajoapi.R;
 import com.example.trabajoapi.buscadores.buscadorNft.NftPOJO;
 import com.example.trabajoapi.buscadores.buscadorNft.NftViewHolder;
+import com.example.trabajoapi.resultadosBuscadores.resultadoNft.nftDetalle.NftDetalle;
 
 import java.util.List;
 
@@ -37,6 +39,12 @@ public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingView
                 .load(data.getCoins().getSmall())
                 .apply(RequestOptions.circleCropTransform()).override(100, 100)
                 .into(holder.imagen_moneda);
+        holder.boton_favorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //añadir a favoritos
+            }
+        });
     }
 
     @Override

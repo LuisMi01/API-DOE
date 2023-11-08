@@ -53,7 +53,7 @@
 
             />
         <activity
-            android:name=".Favoritos"
+            android:name=".dataBase.Favoritos"
             android:exported="true"
             android:parentActivityName=".MainActivity"
             tools:ignore="UnusedAttribute"
