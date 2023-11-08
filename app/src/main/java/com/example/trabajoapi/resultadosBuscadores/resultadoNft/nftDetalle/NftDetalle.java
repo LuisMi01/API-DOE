@@ -76,16 +76,19 @@ public class NftDetalle extends AppCompatActivity {
                 public void onResponse(Call<NftDetallePOJO> call, Response<NftDetallePOJO> response) {
                     if (response.isSuccessful()) {
                         NftDetallePOJO nftDetallePOJO = response.body();
+                        FloorPrice floorPrice = nftDetallePOJO.getFloor_price();
                         nombreNft.setText(nftDetallePOJO.getName());
                         assetPlatformNft.setText("Plataforma:\n" + nftDetallePOJO.getAsset_platform_id());
                         descripcionNft.setText("Descripcion:\n" + nftDetallePOJO.getDescription());
                         addressNft.setText("Direccion del contrato:\n" + nftDetallePOJO.getContract_address());
                         symbolNft.setText("Símbolo:\n" + nftDetallePOJO.getSymbol());
-                        precioNft.setText("Precio (USD):\n" + nftDetallePOJO.getFloor_price().toString() + " $");
+
+                        precioNft.setText("Precio (USD):\n" + floorPrice.getUsd() + " $");
 
                         if (imagenNft != null) {
-                            Imagen urlImagen = nftDetallePOJO.getImage();
-                            Glide.with(NftDetalle.this).load(urlImagen).into(imagenNft);
+                            Imagen imagen = nftDetallePOJO.getImage();
+                            String urlImagen = imagen.getSmall();
+                            Glide.with(NftDetalle.this).load(urlImagen).override(525, 525).into(imagenNft);
                         }
                     } else {
                         Log.e("NftDetalle", response.errorBody().toString());

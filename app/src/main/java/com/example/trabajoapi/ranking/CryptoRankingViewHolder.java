@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabajoapi.R;
 
 public class CryptoRankingViewHolder extends RecyclerView.ViewHolder{
-    TextView nombre_moneda, score_moneda, precio_moneda;
-    ImageView imagen_moneda;
-    Button boton_favorito;
+    public TextView nombre_moneda;
+    public TextView score_moneda;
+    public TextView precio_moneda;
+    public ImageView imagen_moneda;
+    public Button boton_favorito;
 
     public CryptoRankingViewHolder(@NonNull View itemView) {
         super(itemView);

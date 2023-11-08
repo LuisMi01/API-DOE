@@ -1,12 +1,12 @@
 package com.example.trabajoapi.resultadosBuscadores.resultadoCrypto;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
@@ -15,16 +15,11 @@ import com.example.trabajoapi.Buscador;
 import com.example.trabajoapi.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
-import com.example.trabajoapi.ranking.CoinGeckoResponse;
-import com.example.trabajoapi.ranking.CoinGekoApi;
-
-import java.util.List;
+import com.example.trabajoapi.RepresentacionWebView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ResultadoCrypto extends AppCompatActivity {
     private TextView nombbreCrypto;
@@ -32,8 +27,8 @@ public class ResultadoCrypto extends AppCompatActivity {
 
     private TextView precioCrypto;
     private TextView descripcionCrypto;
-    private TextView webCrypto;
-private ImageView imagenCrypto;
+    private Button webCrypto;
+    private ImageView imagenCrypto;
     private CryptoApi apiService;
 
     @Override
@@ -90,16 +85,19 @@ private ImageView imagenCrypto;
                         descripcionCrypto.setText("Descripcion:\n" + description.getEn());
                         precioCrypto.setText("Valor de la moneda:\n" + current_price.getEur() + " €");
                         if (links != null) {
-                            List<String> homepageLinks = links.getHomepage();
-                            if (homepageLinks != null) {
-                                webCrypto.setText("Pagina web:\n" + homepageLinks.get(0));
-                            } else {
-                                webCrypto.setText("Pagina web:\n" + "No disponible");
-                            }
+                            webCrypto.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    webCrypto.setText("Pagina web");
+                                    Intent intent = new Intent(ResultadoCrypto.this, RepresentacionWebView.class);
+                                    intent.putExtra("url", links.getHomepage().get(0));
+                                    startActivity(intent);
+                                }
+                            });
                         }
                         if (image != null) {
                             String urlImagen = image.getSmall();
-                            Glide.with(ResultadoCrypto.this).load(urlImagen).into(imagenCrypto);
+                            Glide.with(ResultadoCrypto.this).load(urlImagen).override(350, 350).into(imagenCrypto);
                         }
                     }
                 } else {

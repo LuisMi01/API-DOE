@@ -4,40 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ranking.Ranking"
+    tools:context=".buscadores.BuscadorCrypto"
     android:background="@color/fondo">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_buscador_crypto"
-        android:id="@+id/cajon_moneda">
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/titulo_buscador_crypto"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="@color/tarjetas"
-        android:gravity="center"
-        android:text="Ranking\nMonedas"
-        android:textAlignment="center"
-        android:textColor="@color/texto"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:background="@color/tarjetas"
         android:gravity="center"
@@ -83,9 +55,13 @@
             android:textSize="15sp" />
     </LinearLayout>
 
-
-
-
-
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

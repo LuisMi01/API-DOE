@@ -123,7 +123,8 @@
         android:id="@+id/resultado_imagen_nft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/linearLayout2"
         app:layout_constraintTop_toBottomOf="@+id/titulo_resultado_nft"
@@ -140,7 +141,7 @@
         android:text="contract_address"
         android:textAlignment="center"
         android:textColor="@color/texto"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +166,7 @@
             android:text="description"
             android:textAlignment="center"
             android:textColor="@color/texto"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
     </ScrollView>

@@ -62,17 +62,17 @@
                     android:padding="10dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
-                <TextView
+                <Button
                     android:id="@+id/link_web_exchange"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="link_web"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/botones"
+                    android:text="Pagina Web"
                     android:textColor="@color/texto"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="15sp"
+                    android:layout_gravity="center" />
 
                 <TextView
                     android:id="@+id/fecha_salida_exchange"

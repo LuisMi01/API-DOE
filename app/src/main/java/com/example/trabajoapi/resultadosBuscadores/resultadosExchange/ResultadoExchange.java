@@ -3,6 +3,8 @@ package com.example.trabajoapi.resultadosBuscadores.resultadosExchange;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -13,6 +15,9 @@ import com.example.trabajoapi.Buscador;
 import com.example.trabajoapi.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
+import com.example.trabajoapi.RepresentacionWebView;
+import com.example.trabajoapi.resultadosBuscadores.resultadoCrypto.ResultadoCrypto;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,7 +51,7 @@ public class ResultadoExchange extends AppCompatActivity {
         TextView fechaCreacionExchange = findViewById(R.id.fecha_salida_exchange);
         TextView descripcionExchange = findViewById(R.id.descripcion_exchange);
         TextView paisExchange = findViewById(R.id.pais_nacimiento_exchange);
-        TextView webExchange = findViewById(R.id.link_web_exchange);
+        Button webExchange = findViewById(R.id.link_web_exchange);
         ImageView imagenExchange = findViewById(R.id.imagen_id_exchange);
 
         // Configura Retrofit
@@ -67,14 +72,22 @@ public class ResultadoExchange extends AppCompatActivity {
                         descripcionExchange.setText("Descripcion:\n" + datosExchange.getDescription());
                         paisExchange.setText("Pais de residencia:\n" + datosExchange.getCountry());
                             if (webExchange != null) {
-                                webExchange.setText("Pagina web:\n" + datosExchange.getUrl());
+                                webExchange.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        webExchange.setText("Pagina web");
+                                        Intent intent = new Intent(ResultadoExchange.this, RepresentacionWebView.class);
+                                        intent.putExtra("url", datosExchange.getUrl());
+                                        startActivity(intent);
+                                    }
+                                });
                             } else {
                                 webExchange.setText("Pagina web:\n" + "No disponible");
                             }
 
                         if (imagenExchange != null) {
                             String urlImagen = datosExchange.getImage();
-                            Glide.with(ResultadoExchange.this).load(urlImagen).into(imagenExchange);
+                            Glide.with(ResultadoExchange.this).load(urlImagen).override(400, 400).into(imagenExchange);
                         }
                     }
                 } else {

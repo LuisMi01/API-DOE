@@ -25,7 +25,6 @@ public class BuscadorNft extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscador_nft);
-        recyclerView = findViewById(R.id.recycler_lista_nft);
 
         findViewById(R.id.boton_home).setOnClickListener(view -> {
             Intent intent = new Intent(this, MainActivity.class);
@@ -41,6 +40,7 @@ public class BuscadorNft extends AppCompatActivity {
             startActivity(intent);
         });
 
+        recyclerView = findViewById(R.id.recycler_lista_nft);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         obtenerNfts();
@@ -53,10 +53,8 @@ public class BuscadorNft extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<NftPOJO>> call, Response<List<NftPOJO>> response) {
                 dataList = response.body();
-                // Inicializa el adaptador y establece los datos aquí.
                 adapter = new NftAdapter(dataList);
                 recyclerView.setAdapter(adapter);
-                // Notifica al adaptador que los datos han cambiado.
                 adapter.notifyDataSetChanged();
             }
 

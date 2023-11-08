@@ -1,19 +1,13 @@
 package com.example.trabajoapi.buscadores.buscadorNft;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.trabajoapi.R;
 import com.example.trabajoapi.resultadosBuscadores.resultadoNft.nftDetalle.NftDetalle;
-import com.example.trabajoapi.resultadosBuscadores.resultadosExchange.ResultadoExchange;
 
 import java.util.List;
 
