@@ -7,4 +7,5 @@
     <color name="tarjetas">#1e1e1e</color>
     <color name="texto_secundario">#888888</color>
     <color name="iconos">#CCCCCC</color>
+    <color name="rojo">#D00005</color>
 </resources>

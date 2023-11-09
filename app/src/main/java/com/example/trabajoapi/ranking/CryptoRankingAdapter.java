@@ -1,6 +1,7 @@
 package com.example.trabajoapi.ranking;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,26 +46,66 @@ public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingView
                 .apply(RequestOptions.circleCropTransform()).override(400, 400)
                 .into(holder.imagen_moneda);
 
+        if (isFavorite(item.getName(), holder.itemView.getContext())) {
+            // Si está en favoritos, establecer el fondo del botón como verde (o cualquier otro color)
+            holder.boton_favorito.setBackgroundResource(R.drawable.color_es_favorito);
+        } else {
+            // Si no está en favoritos, establecer el fondo del botón como el predeterminado
+            holder.boton_favorito.setBackgroundResource(R.drawable.color_favorito);
+        }
+
         holder.boton_favorito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addToFavorites(item.getName(), holder.itemView.getContext());
+                // Verificar si el objeto está en favoritos
+                boolean esFavorito = isFavorite(item.getName(), holder.itemView.getContext());
+                // Actualizar la base de datos y cambiar el color del botón en consecuencia
+                if (esFavorito) {
+                    removeFromFavorites(item.getName(), holder.itemView.getContext());
+                    // Cambiar el fondo del botón al predeterminado
+                    holder.boton_favorito.setBackgroundResource(R.drawable.color_favorito);
+                } else {
+                    addToFavorites(item.getName(), holder.itemView.getContext());
+                    // Cambiar el fondo del botón a verde (o cualquier otro color)
+                    holder.boton_favorito.setBackgroundResource(R.drawable.color_es_favorito);
+                }
             }
         });
+    }
+
+    private void removeFromFavorites(String nombreMoneda, Context context) {
+        DataBaseHelper baseDatos = new DataBaseHelper(context);
+
+        // Quitar de favoritos
+        baseDatos.unmarkAsFavorite(nombreMoneda);
+        baseDatos.close();
+
+        // Mostrar un Toast o mensaje de confirmación si lo deseas
+        Toast.makeText(context, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+        Log.d("Database", "Objeto eliminado de favoritos: " + nombreMoneda);
+    }
+
+    private boolean isFavorite(String nombreMoneda, Context context) {
+        // Verificar si el objeto está en favoritos utilizando tu método isFavorite en DatabaseAPI
+        DataBaseHelper baseDatos = new DataBaseHelper(context);
+        boolean esFavorito = baseDatos.isFavorite(nombreMoneda);
+        baseDatos.close();
+        return esFavorito;
+
     }
 
     private void addToFavorites(String nombreMoneda, Context context) {
         DataBaseHelper baseDatos = new DataBaseHelper(context);
 
         // Añadir a favoritos
-        baseDatos.open();  // Abrir la base de datos
         baseDatos.markAsFavorite(nombreMoneda);
         baseDatos.close(); // Cerrar la base de datos
 
         // Puedes mostrar un Toast u otra retroalimentación aquí si lo deseas
         Toast.makeText(context, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
-    }
+        Log.d("Database", "Objeto añadido a favoritos: " + nombreMoneda);
 
+    }
 
     @Override
     public int getItemCount() {

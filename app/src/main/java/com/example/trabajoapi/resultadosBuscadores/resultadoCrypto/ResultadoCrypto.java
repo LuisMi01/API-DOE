@@ -2,6 +2,7 @@ package com.example.trabajoapi.resultadosBuscadores.resultadoCrypto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 public class ResultadoCrypto extends AppCompatActivity {
     private TextView nombbreCrypto;
     private TextView fechaCreacion;
-    private ImageButton botonFavoritos;
+    private Button botonFavoritos;
     private TextView precioCrypto;
     private TextView descripcionCrypto;
     private Button webCrypto;
@@ -118,20 +119,64 @@ public class ResultadoCrypto extends AppCompatActivity {
             }
         });
 
+        if(isFavorite(cryptoId, this)){
+            // Si está en favoritos, establecer el fondo del botón como verde (o cualquier otro color)
+            botonFavoritos.setBackgroundResource(R.drawable.color_es_favorito);
+        } else {
+            // Si no está en favoritos, establecer el fondo del botón como el predeterminado
+            botonFavoritos.setBackgroundResource(R.drawable.color_favorito);
+        }
+
         botonFavoritos.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                DataBaseHelper db = new DataBaseHelper(ResultadoCrypto.this);
-                isFavorite = db.isFavorite(currentCrypto.getName());
-                if (isFavorite) {
-                    db.unmarkAsFavorite(currentCrypto.getName());
-                    Toast.makeText(ResultadoCrypto.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                // Verificar si el objeto está en favoritos
+                boolean esFavorito = isFavorite(cryptoId, ResultadoCrypto.this);
+                // Actualizar la base de datos y cambiar el color del botón en consecuencia
+                if (esFavorito) {
+                    removeFromFavorites(cryptoId, ResultadoCrypto.this);
+                    // Cambiar el fondo del botón al predeterminado
+                    botonFavoritos.setBackgroundResource(R.drawable.color_favorito);
                 } else {
-                    db.markAsFavorite(currentCrypto.getName());
-                    Toast.makeText(ResultadoCrypto.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                    addToFavorites(cryptoId, ResultadoCrypto.this);
+                    // Cambiar el fondo del botón a verde (o cualquier otro color)
+                    botonFavoritos.setBackgroundResource(R.drawable.color_es_favorito);
                 }
             }
         });
+    }
+
+    private void removeFromFavorites(String nombreMoneda, Context context) {
+        DataBaseHelper baseDatos = new DataBaseHelper(context);
+
+        // Quitar de favoritos
+        baseDatos.unmarkAsFavorite(nombreMoneda);
+        baseDatos.close();
+
+        // Mostrar un Toast o mensaje de confirmación si lo deseas
+        Toast.makeText(context, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+        Log.d("Database", "Objeto eliminado de favoritos: " + nombreMoneda);
+    }
+
+    private boolean isFavorite(String nombreMoneda, Context context) {
+        // Verificar si el objeto está en favoritos utilizando tu método isFavorite en DatabaseAPI
+        DataBaseHelper baseDatos = new DataBaseHelper(context);
+        boolean esFavorito = baseDatos.isFavorite(nombreMoneda);
+        baseDatos.close();
+        return esFavorito;
+
+    }
+
+    private void addToFavorites(String nombreMoneda, Context context) {
+        DataBaseHelper baseDatos = new DataBaseHelper(context);
+        // Añadir a favoritos
+        baseDatos.markAsFavorite(nombreMoneda);
+        baseDatos.close(); // Cerrar la base de datos
+
+        // Puedes mostrar un Toast u otra retroalimentación aquí si lo deseas
+        Toast.makeText(context, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+        Log.d("Database", "Objeto añadido a favoritos: " + nombreMoneda);
+
     }
 
 }

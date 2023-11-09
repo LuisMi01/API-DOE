@@ -5,81 +5,45 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/bordes_color_resalto"
-    android:layout_margin="10dp"
+    android:layout_margin="15dp"
     >
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="horizontal"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="10dp">
+        android:layout_gravity="center"
+        >
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/nombre_tarjeta_favorito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="nombre_moneda"
 
-            <TextView
-                android:id="@+id/nombre_base_datos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="nombre_moneda"
-                android:textColor="@color/texto"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:layout_margin="10dp"/>
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:textColor="@color/texto"
+            android:textStyle="bold"
+            android:padding="10dp"/>
 
-            <TextView
-                android:id="@+id/precio_base_datos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="precio_moneda"
-                android:textColor="@color/texto"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:background="@color/resalto"/>
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/boton_tarjeta_favorito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imagen_base_datos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars"
-                android:layout_margin="15dp"
-                android:padding="10dp"
-                android:background="@drawable/bordes_color_botones"
-                android:layout_gravity="center" />
-
-            <Button
-                android:id="@+id/boton_base_datos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Eliminar\nde favoritos"
-                android:padding="10dp"
-                android:layout_margin="5dp"
-                android:layout_gravity="center"
-                android:backgroundTint="#D50000"
-                android:textSize="15dp"
-                android:textColor="@color/texto"
-                android:textStyle="bold"/>
-        </LinearLayout>
-
-
+            android:layout_weight="1"
+            android:backgroundTint="@color/botones"
+            android:text="Mas Informacion"
+            android:padding="10dp"
+            android:textColor="@color/texto"
+            android:textSize="15sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

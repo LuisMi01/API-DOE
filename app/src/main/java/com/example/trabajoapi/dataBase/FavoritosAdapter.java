@@ -6,20 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.trabajoapi.R;
-import com.example.trabajoapi.buscadores.buscadorNft.NftPOJO;
-import com.example.trabajoapi.resultadosBuscadores.resultadoNft.nftDetalle.NftDetalle;
+import com.example.trabajoapi.buscadores.buscadorNft.NftViewHolder;
+import com.example.trabajoapi.resultadosBuscadores.resultadoCrypto.ResultadoCrypto;
 
 import java.util.List;
 
 public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosViewHolder>{
-    private List<FavoritosPOJO> dataList;
+    private List<FavoritosPOJO> favoritosList;
 
-    public FavoritosAdapter(List<FavoritosPOJO> dataList) {
-        this.dataList = dataList;
+    public FavoritosAdapter(List<FavoritosPOJO> favoritosList) {
+        this.favoritosList = favoritosList;
     }
 
     @NonNull
@@ -28,28 +25,22 @@ public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosViewHolder>{
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_tarjeta_favorito, parent, false);
         return new FavoritosViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull FavoritosViewHolder holder, int position) {
-        FavoritosPOJO data = dataList.get(position);
-        holder.nombreBaseDatos.setText("Nombre:\n" + data.getName());
-        holder.precioBaseDatos.setText("Precio:\n"+data.getPrice() + " $");
-        Glide.with(holder.itemView.getContext())
-                .load(data.getImage())
-                .apply(RequestOptions.circleCropTransform()).override(100, 100)
-                .into(holder.imagenBaseDatos);
+        FavoritosPOJO favoritos = favoritosList.get(position);
+        holder.nombreBaseDatos.setText(favoritos.getName());
         holder.botonBaseDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //eliminar de favoritos
+                Intent intent = new Intent(view.getContext(), ResultadoCrypto.class);
+                intent.putExtra("cryptoId", favoritos.getName().toLowerCase());
+                view.getContext().startActivity(intent);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return favoritosList.size();
     }
 }
-
-

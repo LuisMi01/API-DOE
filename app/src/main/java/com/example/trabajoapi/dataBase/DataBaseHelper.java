@@ -25,10 +25,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public void open() throws SQLException {
-        SQLiteDatabase db = this.getWritableDatabase();
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_FAVORITES + " (" +
@@ -74,13 +70,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return isFavorite;
     }
 
-    public List<FavoritosPOJO> favoritosList(){
-        List<String> favoritesList = new ArrayList<>();
+    public List<FavoritosPOJO> favoritosList() {
+        List<FavoritosPOJO> favoritosList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(DataBaseHelper.TABLE_FAVORITES,
-                new String[]{DataBaseHelper.COLUMN_NAME},
-                DataBaseHelper.COLUMN_IS_FAVORITE + " = ?",
+        Cursor cursor = db.query(TABLE_FAVORITES,
+                new String[]{COLUMN_NAME},
+                COLUMN_IS_FAVORITE + " = ?",
                 new String[]{"1"},
                 null,
                 null,
@@ -88,16 +84,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(DataBaseHelper.COLUMN_NAME));
-                favoritesList.add(name);
+                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+                // Aquí deberías crear instancias de FavoritosPOJO y agregarlas a la lista
+                FavoritosPOJO favorito = new FavoritosPOJO();
+                favorito.setName(name);
+                favoritosList.add(favorito);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-
-        return favoritosList();
+        return favoritosList;
     }
-
-
 }
+
