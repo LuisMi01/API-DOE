@@ -4,14 +4,14 @@ public class Item {
 
     private String name;
     private int score;
-    private double price;
+    private double price_btc;
 
     private String small;
 
-    public Item(String name, int score, double price, String small) {
+    public Item(String name, int score, double price_btc, String small) {
         this.name = name;
         this.score = score;
-        this.price = price;
+        this.price_btc = price_btc;
         this.small = small;
     }
 
@@ -20,11 +20,11 @@ public class Item {
     }
 
     public int getScore() {
-        return score;
+        return score + 1;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPrice_btc() {
+        return price_btc;
     }
 
     public String getSmall() {

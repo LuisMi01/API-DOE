@@ -15,8 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slogan_buscador_nft"
-        android:layout_margin="10dp"
-        android:padding="10dp"/>
+         />
 
     <TextView
         android:id="@+id/titulo_ranking_monedas"

@@ -13,9 +13,10 @@ import java.util.List;
 
 public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingViewHolder>{
 
-    private List<CryptoRankingPOJO> dataList;
 
-    public CryptoRankingAdapter(List<CryptoRankingPOJO> dataList) {
+    private List<Coin> dataList;  // Cambié el tipo de datos aquí
+
+    public CryptoRankingAdapter(List<Coin> dataList) {
         this.dataList = dataList;
     }
 
@@ -28,32 +29,30 @@ public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingView
 
     @Override
     public void onBindViewHolder(@NonNull CryptoRankingViewHolder holder, int position) {
-        CryptoRankingPOJO coin = dataList.get(position);
-        holder.nombre_moneda.setText("Nombre:\n" + coin.getItem().getName());
-        holder.score_moneda.setText("Ranking:\n" + coin.getItem().getScore());
-        holder.precio_moneda.setText("Precio:\n" + coin.getItem().getPrice() + " $");
+        Coin coin = dataList.get(position);
+        Item item = coin.getItem();
+
+        holder.nombre_moneda.setText("Nombre\n" + item.getName());
+        holder.score_moneda.setText("Ranking\n#" + item.getScore());
+        holder.precio_moneda.setText("Precio\n" + item.getPrice_btc() + " BTC");
 
         Glide.with(holder.itemView.getContext())
-                .load(coin.getItem().getSmall())
-                .apply(RequestOptions.circleCropTransform()).override(200, 200)
+                .load(item.getSmall())
+                .apply(RequestOptions.circleCropTransform()).override(400, 400)
                 .into(holder.imagen_moneda);
 
         holder.boton_favorito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //añadir a favoritos
+                // Añadir a favoritos
             }
         });
-
-        //Log.d("TAG", "onBindViewHolder: " + data.getCoins().getName() + " " + data.getCoins().getScore() + " " + data.getCoins().getPrice() + " " + data.getCoins().getSmall());
-
     }
 
     @Override
     public int getItemCount() {
         return dataList.size();
     }
-
 }
 
 

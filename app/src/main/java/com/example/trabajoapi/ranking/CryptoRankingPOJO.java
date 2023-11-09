@@ -5,14 +5,9 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 public class CryptoRankingPOJO {
+    private List<Coin> coins;
 
-    private Item item;
-
-    public Item getItem() {
-        return item;
-    }
-
-    public CryptoRankingPOJO(Item item) {
-        this.item = item;
+    public List<Coin> getCoins() {
+        return coins;
     }
 }

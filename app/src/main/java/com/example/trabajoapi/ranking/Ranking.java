@@ -50,18 +50,22 @@ public class Ranking extends AppCompatActivity {
 
     public void obtenerNfts() {
         CoinGekoApi apiService = APIClient.getRetrofit().create(CoinGekoApi.class);
-        Call<List<CryptoRankingPOJO>> call = apiService.getRankingCoins();
-        call.enqueue(new Callback<List<CryptoRankingPOJO>>() {
+        Call<CryptoRankingPOJO> call = apiService.getRankingCoins();
+        call.enqueue(new Callback<CryptoRankingPOJO>() {
             @Override
-            public void onResponse(Call<List<CryptoRankingPOJO>> call, Response<List<CryptoRankingPOJO>> response) {
-                dataList = response.body();
-                adapter = new CryptoRankingAdapter(dataList);
-                recyclerView.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+            public void onResponse(Call<CryptoRankingPOJO> call, Response<CryptoRankingPOJO> response) {
+                CryptoRankingPOJO cryptoRankingPOJO = response.body();
+                if (cryptoRankingPOJO != null) {
+                    List<Coin> coinList = cryptoRankingPOJO.getCoins();
+                    adapter = new CryptoRankingAdapter(coinList);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                }
             }
 
+
             @Override
-            public void onFailure(Call<List<CryptoRankingPOJO>> call, Throwable t) {
+            public void onFailure(Call<CryptoRankingPOJO> call, Throwable t) {
                 Log.e("CryptoRankingResponse: ", t.getMessage());
             }
         });
