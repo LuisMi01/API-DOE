@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:backgroundTint="@color/resalto"
+                android:backgroundTint="@color/colorBotonFavorito"
                 android:padding="10dp"
                 android:text="Añadir\n a favoritos"
                 android:textColor="@color/texto"

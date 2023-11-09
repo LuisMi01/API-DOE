@@ -107,6 +107,26 @@ public class ResultadoCrypto extends AppCompatActivity {
                             String urlImagen = image.getSmall();
                             Glide.with(ResultadoCrypto.this).load(urlImagen).override(350, 350).into(imagenCrypto);
                         }
+
+                        botonFavoritos.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                // Verificar si el objeto está en favoritos
+                                boolean esFavorito = isFavorite(cryptoId, ResultadoCrypto.this);
+                                // Actualizar la base de datos y cambiar el color del botón en consecuencia
+                                if (esFavorito) {
+                                    removeFromFavorites(cryptoId, ResultadoCrypto.this);
+                                    // Cambiar el fondo del botón al predeterminado
+
+                                    Toast.makeText(ResultadoCrypto.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    addToFavorites(cryptoId, ResultadoCrypto.this);
+                                    // Cambiar el fondo del botón a verde (o cualquier otro color)
+
+                                    Toast.makeText(ResultadoCrypto.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
                 } else {
                     nombbreCrypto.setText("Error en la solicitud.");
@@ -119,31 +139,7 @@ public class ResultadoCrypto extends AppCompatActivity {
             }
         });
 
-        if(isFavorite(cryptoId, this)){
-            // Si está en favoritos, establecer el fondo del botón como verde (o cualquier otro color)
-            botonFavoritos.setBackgroundResource(R.drawable.color_es_favorito);
-        } else {
-            // Si no está en favoritos, establecer el fondo del botón como el predeterminado
-            botonFavoritos.setBackgroundResource(R.drawable.color_favorito);
-        }
 
-        botonFavoritos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Verificar si el objeto está en favoritos
-                boolean esFavorito = isFavorite(cryptoId, ResultadoCrypto.this);
-                // Actualizar la base de datos y cambiar el color del botón en consecuencia
-                if (esFavorito) {
-                    removeFromFavorites(cryptoId, ResultadoCrypto.this);
-                    // Cambiar el fondo del botón al predeterminado
-                    botonFavoritos.setBackgroundResource(R.drawable.color_favorito);
-                } else {
-                    addToFavorites(cryptoId, ResultadoCrypto.this);
-                    // Cambiar el fondo del botón a verde (o cualquier otro color)
-                    botonFavoritos.setBackgroundResource(R.drawable.color_es_favorito);
-                }
-            }
-        });
     }
 
     private void removeFromFavorites(String nombreMoneda, Context context) {

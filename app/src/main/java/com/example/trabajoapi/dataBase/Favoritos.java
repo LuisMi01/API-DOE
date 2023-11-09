@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ public class Favoritos extends AppCompatActivity {
     private FavoritosAdapter adapter;
     private List<FavoritosPOJO> favoritosList;
     private DataBaseHelper db;
+    private TextView textNoFavorites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class Favoritos extends AppCompatActivity {
             }
         });
 
+        textNoFavorites = findViewById(R.id.text_no_favorites);
+
         db = new DataBaseHelper(this);
         recyclerView = findViewById(R.id.recycle_view_favoritos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -59,7 +63,14 @@ public class Favoritos extends AppCompatActivity {
     private void getFavoritos() {
         favoritosList.clear();
         favoritosList.addAll(db.favoritosList());
+
+        if (favoritosList.isEmpty()) {
+            textNoFavorites.setVisibility(View.VISIBLE);
+        } else {
+            textNoFavorites.setVisibility(View.GONE);
+        }
     }
+
 
 
 }

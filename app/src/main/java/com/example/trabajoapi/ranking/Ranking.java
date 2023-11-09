@@ -1,5 +1,9 @@
 package com.example.trabajoapi.ranking;
 
+import static android.app.PendingIntent.getActivity;
+import static java.security.AccessController.getContext;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabajoapi.APIClient;
 import com.example.trabajoapi.Buscador;
+import com.example.trabajoapi.dataBase.DataBaseHelper;
 import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
@@ -22,6 +27,8 @@ public class Ranking extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CryptoRankingAdapter adapter;
     private List<CryptoRankingPOJO> dataList;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +66,6 @@ public class Ranking extends AppCompatActivity {
                     List<Coin> coinList = cryptoRankingPOJO.getCoins();
                     adapter = new CryptoRankingAdapter(coinList);
                     recyclerView.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
                 }
             }
 
