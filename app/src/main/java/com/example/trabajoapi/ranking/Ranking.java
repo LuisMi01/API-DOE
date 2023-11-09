@@ -20,9 +20,7 @@ import retrofit2.Response;
 public class Ranking extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-
     private CryptoRankingAdapter adapter;
-
     private List<CryptoRankingPOJO> dataList;
 
     @Override
@@ -44,28 +42,28 @@ public class Ranking extends AppCompatActivity {
             startActivity(intent);
         });
 
-        recyclerView = findViewById(R.id.cajon_moneda);
+        recyclerView = findViewById(R.id.recycler_lista_ranking);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        fetchCryptoRanking();
+        obtenerNfts();
     }
 
-    private void fetchCryptoRanking() {
-            CoinGekoApi apiService = APIClient.getRetrofit().create(CoinGekoApi.class);
-            Call<List<CryptoRankingPOJO>> call = apiService.getRankingCoins();
-            call.enqueue(new Callback<List<CryptoRankingPOJO>>() {
-                @Override
-                public void onResponse(Call<List<CryptoRankingPOJO>> call, Response<List<CryptoRankingPOJO>> response) {
-                    dataList = response.body();
-                    adapter = new CryptoRankingAdapter(dataList);
-                    recyclerView.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                }
+    public void obtenerNfts() {
+        CoinGekoApi apiService = APIClient.getRetrofit().create(CoinGekoApi.class);
+        Call<List<CryptoRankingPOJO>> call = apiService.getRankingCoins();
+        call.enqueue(new Callback<List<CryptoRankingPOJO>>() {
+            @Override
+            public void onResponse(Call<List<CryptoRankingPOJO>> call, Response<List<CryptoRankingPOJO>> response) {
+                dataList = response.body();
+                adapter = new CryptoRankingAdapter(dataList);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
 
-                @Override
-                public void onFailure(Call<List<CryptoRankingPOJO>> call, Throwable t) {
-                    Log.d("CryptoRanking", t.getMessage());
-                }
-            });
-        }
+            @Override
+            public void onFailure(Call<List<CryptoRankingPOJO>> call, Throwable t) {
+                Log.e("CryptoRankingResponse: ", t.getMessage());
+            }
+        });
+    }
 }

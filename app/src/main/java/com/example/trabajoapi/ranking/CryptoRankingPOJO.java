@@ -6,13 +6,13 @@ import java.util.List;
 
 public class CryptoRankingPOJO {
 
-    private Item coins;
+    private Item item;
 
-    public CryptoRankingPOJO(Item coins) {
-        this.coins = coins;
+    public Item getItem() {
+        return item;
     }
 
-    public Item getCoins() {
-        return coins;
+    public CryptoRankingPOJO(Item item) {
+        this.item = item;
     }
 }
