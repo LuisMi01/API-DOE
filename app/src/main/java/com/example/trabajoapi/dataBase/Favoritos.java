@@ -15,6 +15,7 @@ import java.util.List;
 public class Favoritos extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FavoritosAdapter favoritosAdapter;
+
     private List<FavoritosPOJO> favoritosList;
     private DataBaseHelper db;
 
@@ -48,7 +49,7 @@ public class Favoritos extends AppCompatActivity {
             // Inicializa la RecyclerView y su adaptador
             recyclerView = findViewById(R.id.recycle_view_favoritos);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            //favoritosList = db.getFavorites(); // Obtiene los objetos favoritos de la base de datos
+            favoritosList = db.favoritosList();
             favoritosAdapter = new FavoritosAdapter(favoritosList);
             recyclerView.setAdapter(favoritosAdapter);
 

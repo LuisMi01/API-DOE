@@ -45,10 +45,10 @@ public class Ranking extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_lista_ranking);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        obtenerNfts();
+        obtenerRanking();
     }
 
-    public void obtenerNfts() {
+    public void obtenerRanking() {
         CoinGekoApi apiService = APIClient.getRetrofit().create(CoinGekoApi.class);
         Call<CryptoRankingPOJO> call = apiService.getRankingCoins();
         call.enqueue(new Callback<CryptoRankingPOJO>() {

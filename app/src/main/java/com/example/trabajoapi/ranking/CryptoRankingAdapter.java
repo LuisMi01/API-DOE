@@ -1,20 +1,24 @@
 package com.example.trabajoapi.ranking;
 
-import android.util.Log;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.trabajoapi.R;
+import com.example.trabajoapi.dataBase.DataBaseHelper;
+
 import java.util.List;
 
 public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingViewHolder>{
 
 
-    private List<Coin> dataList;  // Cambié el tipo de datos aquí
+    private List<Coin> dataList;
 
     public CryptoRankingAdapter(List<Coin> dataList) {
         this.dataList = dataList;
@@ -44,10 +48,23 @@ public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingView
         holder.boton_favorito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Añadir a favoritos
+                addToFavorites(item.getName(), holder.itemView.getContext());
             }
         });
     }
+
+    private void addToFavorites(String nombreMoneda, Context context) {
+        DataBaseHelper baseDatos = new DataBaseHelper(context);
+
+        // Añadir a favoritos
+        baseDatos.open();  // Abrir la base de datos
+        baseDatos.markAsFavorite(nombreMoneda);
+        baseDatos.close(); // Cerrar la base de datos
+
+        // Puedes mostrar un Toast u otra retroalimentación aquí si lo deseas
+        Toast.makeText(context, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+    }
+
 
     @Override
     public int getItemCount() {
