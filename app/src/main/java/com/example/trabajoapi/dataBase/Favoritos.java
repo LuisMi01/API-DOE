@@ -58,6 +58,17 @@ public class Favoritos extends AppCompatActivity {
 
         getFavoritos();
 
+        Button botonBorrarFavoritos = findViewById(R.id.boton_borrar_favoritos);
+        botonBorrarFavoritos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Llama al método en la base de datos para borrar todos los favoritos
+                borrarTodosLosFavoritos();
+                // Actualiza tu RecyclerView u otros componentes según sea necesario
+                getFavoritos();
+            }
+        });
+
     }
 
     private void getFavoritos() {
@@ -70,6 +81,15 @@ public class Favoritos extends AppCompatActivity {
             textNoFavorites.setVisibility(View.GONE);
         }
     }
+
+    private void borrarTodosLosFavoritos() {
+        if (db != null) {
+            db.borrarTodosLosFavoritos();
+            // Puedes mostrar un Toast u otra retroalimentación aquí si lo deseas
+            Toast.makeText(this, "Se han borrado todos los favoritos", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 
 

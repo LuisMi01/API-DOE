@@ -1,6 +1,7 @@
 package com.example.trabajoapi.ranking;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,23 +52,36 @@ public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingView
                 .apply(RequestOptions.circleCropTransform()).override(400, 400)
                 .into(holder.imagen_moneda);
 
+
+        final boolean[] esFavorito = {isFavorite(item.getName(), holder.itemView.getContext())};
+
+        // Cambiar el fondo del botón y el texto en consecuencia
+        if (esFavorito[0]) {
+            holder.boton_favorito.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.getContext(), R.color.colorBotonNoFavorito)));
+            holder.boton_favorito.setText("Eliminar de favoritos");
+        } else {
+            holder.boton_favorito.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.getContext(), R.color.colorBotonFavorito)));
+            holder.boton_favorito.setText("Añadir a favoritos");
+        }
+
+        // Configurar el clic del botón
         holder.boton_favorito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Verificar si el objeto está en favoritos
-                boolean esFavorito = isFavorite(item.getName(), view.getContext());
-                // Actualizar la base de datos y cambiar el color del botón en consecuencia
-                if (esFavorito) {
+                // Actualizar la base de datos y cambiar el color del botón y el texto en consecuencia
+                if (esFavorito[0]) {
                     removeFromFavorites(item.getName(), view.getContext());
-                    // Cambiar el fondo del botón a verde (o cualquier otro color)
-                    holder.boton_favorito.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.colorBotonFavorito));
-                    holder.boton_favorito.setText("Añadir\na favoritos");
+                    holder.boton_favorito.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonFavorito)));
+                    holder.boton_favorito.setText("Añadir a favoritos");
+                    Toast.makeText(view.getContext(), "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
                 } else {
                     addToFavorites(item.getName(), view.getContext());
-                    // Cambiar el fondo del botón a rojo (o cualquier otro color)
-                    holder.boton_favorito.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.colorBotonNoFavorito));
-                    holder.boton_favorito.setText("Eliminar\nde favoritos");
+                    holder.boton_favorito.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonNoFavorito)));
+                    holder.boton_favorito.setText("Eliminar de favoritos");
+                    Toast.makeText(view.getContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
                 }
+                // Actualizar el estado de esFavorito después de hacer clic
+                esFavorito[0] = !esFavorito[0];
             }
         });
     }

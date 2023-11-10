@@ -1,9 +1,11 @@
 package com.example.trabajoapi.resultadosBuscadores.resultadoCrypto;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -108,23 +110,35 @@ public class ResultadoCrypto extends AppCompatActivity {
                             Glide.with(ResultadoCrypto.this).load(urlImagen).override(350, 350).into(imagenCrypto);
                         }
 
+                        final boolean[] esFavorito = {isFavorite(datosCrypto.getName(), ResultadoCrypto.this)};
+
+                        // Cambiar el fondo del botón y el texto en consecuencia
+                        if (esFavorito[0]) {
+                            botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(ResultadoCrypto.this, R.color.colorBotonNoFavorito)));
+                            botonFavoritos.setText("Eliminar de favoritos");
+                        } else {
+                            botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(ResultadoCrypto.this, R.color.colorBotonFavorito)));
+                            botonFavoritos.setText("Añadir a favoritos");
+                        }
+
+                        // Configurar el clic del botón
                         botonFavoritos.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                // Verificar si el objeto está en favoritos
-                                boolean esFavorito = isFavorite(cryptoId, ResultadoCrypto.this);
-                                // Actualizar la base de datos y cambiar el color del botón en consecuencia
-                                if (esFavorito) {
-                                    removeFromFavorites(cryptoId, ResultadoCrypto.this);
-                                    // Cambiar el fondo del botón al predeterminado
-
-                                    Toast.makeText(ResultadoCrypto.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+                                // Actualizar la base de datos y cambiar el color del botón y el texto en consecuencia
+                                if (esFavorito[0]) {
+                                    removeFromFavorites(datosCrypto.getName(), view.getContext());
+                                    botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonFavorito)));
+                                    botonFavoritos.setText("Añadir a favoritos");
+                                    Toast.makeText(view.getContext(), "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    addToFavorites(cryptoId, ResultadoCrypto.this);
-                                    // Cambiar el fondo del botón a verde (o cualquier otro color)
-
-                                    Toast.makeText(ResultadoCrypto.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                                    addToFavorites(datosCrypto.getName(), view.getContext());
+                                    botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonNoFavorito)));
+                                    botonFavoritos.setText("Eliminar de favoritos");
+                                    Toast.makeText(view.getContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
                                 }
+                                // Actualizar el estado de esFavorito después de hacer clic
+                                esFavorito[0] = !esFavorito[0];
                             }
                         });
                     }

@@ -96,5 +96,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return favoritosList;
     }
+
+    public void borrarTodosLosFavoritos() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_FAVORITES, null, null);
+        db.close();
+    }
+
 }
 
