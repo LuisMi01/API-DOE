@@ -10,8 +10,7 @@ Inicialmente, enfrenté dificultades al trabajar con la API, ya que la manipulac
 <br>
 Continuando con la implementación de esta aplicación de criptomonedas, se utilizaron diversas tecnologías clave que contribuyen a su funcionalidad y experiencia del usuario:
 
-<br>
-## 1. API y Retrofit
+<br>1. API y Retrofit
 <br>
 Para la conexión a la API de CoinGecko, se optó por la eficiente biblioteca Retrofit. Esta herramienta simplifica la interacción con la API, gestionando las solicitudes y respuestas de manera eficaz. Además, Gson fue fundamental para deserializar las respuestas JSON de la API, permitiendo un manejo sencillo de los datos.
 <br>
