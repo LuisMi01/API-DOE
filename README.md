@@ -20,7 +20,7 @@ Con el objetivo de proporcionar una experiencia personalizada, se implementó un
 3. Interfaz y RecyclerView<br>
 La interfaz de usuario se diseñó para mostrar una lista de elementos mediante un RecyclerView. Cada elemento de la lista presenta un resumen y una imagen asociada, proporcionando una experiencia visual atractiva y fácil de usar.
 <br>
-br>4. Uso de Glide<br>
+<br>4. Uso de Glide<br>
 Glide, una biblioteca de carga y visualización de imágenes eficiente, se integró para cargar y mostrar las imágenes de los elementos en el RecyclerView. Esto garantiza una carga rápida y una presentación visual fluida.
 <br>
 br>5. Detalles del elemento<br>
