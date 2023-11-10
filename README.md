@@ -39,7 +39,8 @@ Se implementó OnClickListener en cada elemento del RecyclerView para detectar c
 Para mejorar la experiencia personalizada, se utilizó DataStore para almacenar preferencias del usuario, como la última categoría seleccionada en el Spinner o el modo oscuro/claro de la aplicación. Esto asegura que la aplicación se adapte a las preferencias individuales de cada usuario.<br>
 <br>
 Este enfoque integral en el desarrollo proporciona una aplicación robusta, intuitiva y altamente personalizable para los entusiastas de las criptomonedas. 
-br>
+<br>
+** Links usados para el proyecto **
 <br>
 ## Aplicación de consumo de API Descripción del Proyecto:
 ### Desarrollar una aplicación que permita al usuario visualizar una elementos consumidos de una API de tu elección y, al hacer clic en una de ellas, mostrar el detalle de ese elemento en un WebView .
