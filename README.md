@@ -1,4 +1,7 @@
 # Proyecto PDE noviembre de Luis Miguel Urbez
+## Explicacion del trabajo realizado
+Para este primer trabajo con Android Studio basado en una aplicacion que consuma una API publica me he querido centrar en la API de CoinGecko, la cual desde el primer momento me intereso y tras investigarla, me di cuenta que era la mejor para el tipo de aplicacion que estaba intentando realizar.<br>
+Para comenzar con el trabajo empece con la creacion de un pequeño boceto en la web de Lucidhart, la ual me ha ayudado astante en la realizaccion de este trabajo, ya que la posibilidad de tener un boceto online en todo momento, y a la vez poder cambiarlo sobre la marcha es realmente util. El boceto en un primer momento solo mostraba datos basicos de estilos y las clases principales en las que basaria mi aplicacion. Mas tarde, como es normal, este boceto empezaria a agrandarse y a ser mas especifico con los detalles de la apliacion.<br>
 
 ## Aplicación de consumo de API Descripción del Proyecto:
 ### Desarrollar una aplicación que permita al usuario visualizar una elementos consumidos de una API de tu elección y, al hacer clic en una de ellas, mostrar el detalle de ese elemento en un WebView .
