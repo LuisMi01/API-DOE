@@ -41,9 +41,11 @@ Para mejorar la experiencia personalizada, se utilizó DataStore para almacenar 
 Este enfoque integral en el desarrollo proporciona una aplicación robusta, intuitiva y altamente personalizable para los entusiastas de las criptomonedas. 
 <br>
 **Links usados para el proyecto**
-LucidHart: https://lucid.app/lucidspark/1a859179-ce6d-4f00-93bc-3e91b0db0732/edit?viewport_loc=-1941%2C56%2C6983%2C3724%2C0_0&invitationId=inv_0f649f8f-eaa7-4fe6-9385-b42832b35d02
-Documentacion API: https://www.coingecko.com/api/documentation
-Raiz de Solicitudes a la API: https://api.coingecko.com/api/v3/
+<br>LucidHart: https://lucid.app/lucidspark/1a859179-ce6d-4f00-93bc-3e91b0db0732/edit?viewport_loc=-1941%2C56%2C6983%2C3724%2C0_0&invitationId=inv_0f649f8f-eaa7-4fe6-9385-b42832b35d02
+<br>
+<br>Documentacion API: https://www.coingecko.com/api/documentation
+<br>
+<br>Raiz de Solicitudes a la API: https://api.coingecko.com/api/v3/
 <br>
 ## Aplicación de consumo de API Descripción del Proyecto:
 ### Desarrollar una aplicación que permita al usuario visualizar una elementos consumidos de una API de tu elección y, al hacer clic en una de ellas, mostrar el detalle de ese elemento en un WebView .
