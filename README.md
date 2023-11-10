@@ -10,7 +10,9 @@ Inicialmente, enfrenté dificultades al trabajar con la API, ya que la manipulac
 <br>
 Continuando con la implementación de esta aplicación de criptomonedas, se utilizaron diversas tecnologías clave que contribuyen a su funcionalidad y experiencia del usuario:
 
-<br>1. API y Retrofit<br>
+<br>
+## 1. API y Retrofit
+<br>
 Para la conexión a la API de CoinGecko, se optó por la eficiente biblioteca Retrofit. Esta herramienta simplifica la interacción con la API, gestionando las solicitudes y respuestas de manera eficaz. Además, Gson fue fundamental para deserializar las respuestas JSON de la API, permitiendo un manejo sencillo de los datos.
 <br>
 <br>2. Almacenamiento con SQLite
@@ -19,12 +21,12 @@ Con el objetivo de proporcionar una experiencia personalizada, se implementó un
 3. Interfaz y RecyclerView<br>
 La interfaz de usuario se diseñó para mostrar una lista de elementos mediante un RecyclerView. Cada elemento de la lista presenta un resumen y una imagen asociada, proporcionando una experiencia visual atractiva y fácil de usar.
 <br>
-4. Uso de Glide<br>
+br>4. Uso de Glide<br>
 Glide, una biblioteca de carga y visualización de imágenes eficiente, se integró para cargar y mostrar las imágenes de los elementos en el RecyclerView. Esto garantiza una carga rápida y una presentación visual fluida.
 <br>
-5. Detalles del elemento<br>
+br>5. Detalles del elemento<br>
 Al hacer clic en un elemento de la lista, se implementó un Intent para abrir una nueva actividad que muestra el contenido completo del elemento mediante un WebView. Esta característica permite una exploración más detallada de cada elemento.<br>
-
+br>
 6. Feedback y Toast<br>
 La interacción con el usuario se mejoró mediante el uso de mensajes Toast, proporcionando información instantánea sobre la acción realizada, como guardar o eliminar un elemento de la lista de favoritos.
 <br>
@@ -33,13 +35,14 @@ Se incluyó un Spinner en la parte superior de la aplicación para permitir al u
 <br>
 8. OnClickListener<br>
 Se implementó OnClickListener en cada elemento del RecyclerView para detectar clics y abrir el detalle del elemento. Además, se aplicó OnClickListener en los botones o íconos de favoritos, facilitando la gestión de la lista de elementos favoritos.<br>
-
+br>
 9. Preferencias del Usuario con DataStore<br>
 Para mejorar la experiencia personalizada, se utilizó DataStore para almacenar preferencias del usuario, como la última categoría seleccionada en el Spinner o el modo oscuro/claro de la aplicación. Esto asegura que la aplicación se adapte a las preferencias individuales de cada usuario.<br>
 <br>
 Este enfoque integral en el desarrollo proporciona una aplicación robusta, intuitiva y altamente personalizable para los entusiastas de las criptomonedas. 
+br>
 <br>
-## <br>Aplicación de consumo de API Descripción del Proyecto:
+## Aplicación de consumo de API Descripción del Proyecto:
 ### Desarrollar una aplicación que permita al usuario visualizar una elementos consumidos de una API de tu elección y, al hacer clic en una de ellas, mostrar el detalle de ese elemento en un WebView .
 ** Especificaciones: 1. API y Retrofit: **
 Utiliza Retrofit para conectarte a la API.
