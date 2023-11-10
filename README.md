@@ -44,7 +44,7 @@ Este enfoque integral en el desarrollo proporciona una aplicación robusta, intu
 <br>
 Video explicativo del trabajo: https://myuax-my.sharepoint.com/personal/lurbevil_myuax_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Flurbevil%5Fmyuax%5Fcom%2FDocuments%2FLuisMiguelUrbez%5FVideoExplicativo%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview
 <br>
-Video explicativo del trabajo con vinculo directo: LuisMiguelUrbez_VideoExplicativo.mp4
+Video explicativo del trabajo con vinculo directo: [LuisMiguelUrbez_VideoExplicativo.mp4](https://myuax-my.sharepoint.com/:v:/p/lurbevil/Ea1qm6Z6zThOpgTRaJC5sqkBo8lEQGBTQPbgVax2H-p27Q?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&e=p0FbEa)
 <br>
 
 <br>LucidHart: https://lucid.app/lucidspark/1a859179-ce6d-4f00-93bc-3e91b0db0732/edit?viewport_loc=-1941%2C56%2C6983%2C3724%2C0_0&invitationId=inv_0f649f8f-eaa7-4fe6-9385-b42832b35d02
