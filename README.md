@@ -23,18 +23,18 @@ La interfaz de usuario se diseñó para mostrar una lista de elementos mediante 
 <br>4. Uso de Glide<br>
 Glide, una biblioteca de carga y visualización de imágenes eficiente, se integró para cargar y mostrar las imágenes de los elementos en el RecyclerView. Esto garantiza una carga rápida y una presentación visual fluida.
 <br>
-br>5. Detalles del elemento<br>
+<br>5. Detalles del elemento<br>
 Al hacer clic en un elemento de la lista, se implementó un Intent para abrir una nueva actividad que muestra el contenido completo del elemento mediante un WebView. Esta característica permite una exploración más detallada de cada elemento.<br>
-br>
+<br>
 6. Feedback y Toast<br>
 La interacción con el usuario se mejoró mediante el uso de mensajes Toast, proporcionando información instantánea sobre la acción realizada, como guardar o eliminar un elemento de la lista de favoritos.
 <br>
-7. Interacción con Spinner<br>
+<br>7. Interacción con Spinner<br>
 Se incluyó un Spinner en la parte superior de la aplicación para permitir al usuario filtrar elementos por categoría. Esta funcionalidad ofrece una forma intuitiva de explorar y personalizar la visualización de datos.
 <br>
-8. OnClickListener<br>
+<br>8. OnClickListener<br>
 Se implementó OnClickListener en cada elemento del RecyclerView para detectar clics y abrir el detalle del elemento. Además, se aplicó OnClickListener en los botones o íconos de favoritos, facilitando la gestión de la lista de elementos favoritos.<br>
-br>
+<br>
 9. Preferencias del Usuario con DataStore<br>
 Para mejorar la experiencia personalizada, se utilizó DataStore para almacenar preferencias del usuario, como la última categoría seleccionada en el Spinner o el modo oscuro/claro de la aplicación. Esto asegura que la aplicación se adapte a las preferencias individuales de cada usuario.<br>
 <br>
