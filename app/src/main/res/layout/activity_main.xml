@@ -27,11 +27,11 @@
 
     <TextView
         android:id="@+id/slogan_principal"
-        android:text="Navega por el mundo de\n las criptomonedas con confianza"
-
         android:layout_width="match_parent"
+
         android:layout_height="90dp"
         android:gravity="center"
+        android:text="Navega por el mundo de\n las criptomonedas con confianza"
         android:textAlignment="center"
         android:textColor="@color/texto"
         android:textSize="20sp"
@@ -41,21 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo_principal" />
 
-    <Button
-        android:id="@+id/boton_ranking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/botones"
-        android:text="Ranking de monedas"
-        android:textColor="@color/texto"
-        android:textSize="25sp"
-        android:textStyle="bold"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slogan_principal" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -107,12 +93,12 @@
 
     <ImageView
         android:id="@+id/imagen_principal"
-        android:layout_width="290dp"
-        android:layout_height="278dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boton_ranking"
+        app:layout_constraintTop_toBottomOf="@+id/slogan_principal"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -124,6 +110,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/texto"/>
+
+
+    <Button
+        android:id="@+id/boton_ranking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:backgroundTint="@color/botones"
+        android:text="Ranking de monedas"
+        android:textColor="@color/texto"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan_principal" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

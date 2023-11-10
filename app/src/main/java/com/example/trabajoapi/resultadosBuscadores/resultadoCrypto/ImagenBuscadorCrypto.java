@@ -16,4 +16,5 @@ public class ImagenBuscadorCrypto {
     public String getLarge() {
         return large;
     }
+
 }

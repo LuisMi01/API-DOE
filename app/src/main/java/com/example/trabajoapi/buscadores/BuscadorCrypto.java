@@ -13,6 +13,8 @@ import com.example.trabajoapi.R;
 import com.example.trabajoapi.resultadosBuscadores.resultadoCrypto.ResultadoCrypto;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
 public class BuscadorCrypto extends AppCompatActivity{
 
         @Override
@@ -37,7 +39,7 @@ public class BuscadorCrypto extends AppCompatActivity{
 
             TextInputEditText texto = findViewById(R.id.input_buscador_crypto);
             findViewById(R.id.boton_buscador_crypto).setOnClickListener(view -> {
-                String userInput = texto.getText().toString();
+                String userInput = Objects.requireNonNull(texto.getText()).toString();
 
                 // Verifica si el campo de entrada no está vacío antes de continuar
                 if (!userInput.isEmpty()) {

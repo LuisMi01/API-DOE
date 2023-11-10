@@ -1,10 +1,10 @@
 package com.example.trabajoapi.buscadores.buscadorNft;
 
 public class NftPOJO {
-    private String id;
-    private String symbol;
-    private String contract_address;
-    private String asset_platform_id;
+    private final String id;
+    private final String symbol;
+    private final String contract_address;
+    private final String asset_platform_id;
 
     public NftPOJO(String id, String symbol, String contract_address, String asset_platform_id) {
         this.id = id;

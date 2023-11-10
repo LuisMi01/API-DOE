@@ -1,22 +1,21 @@
 package com.example.trabajoapi.ranking;
 
-import static android.app.PendingIntent.getActivity;
-import static java.security.AccessController.getContext;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabajoapi.APIClient;
 import com.example.trabajoapi.Buscador;
-import com.example.trabajoapi.dataBase.DataBaseHelper;
 import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
 import java.util.List;
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,7 +59,7 @@ public class Ranking extends AppCompatActivity {
         Call<CryptoRankingPOJO> call = apiService.getRankingCoins();
         call.enqueue(new Callback<CryptoRankingPOJO>() {
             @Override
-            public void onResponse(Call<CryptoRankingPOJO> call, Response<CryptoRankingPOJO> response) {
+            public void onResponse(@NonNull Call<CryptoRankingPOJO> call, @NonNull Response<CryptoRankingPOJO> response) {
                 CryptoRankingPOJO cryptoRankingPOJO = response.body();
                 if (cryptoRankingPOJO != null) {
                     List<Coin> coinList = cryptoRankingPOJO.getCoins();
@@ -69,10 +68,9 @@ public class Ranking extends AppCompatActivity {
                 }
             }
 
-
             @Override
-            public void onFailure(Call<CryptoRankingPOJO> call, Throwable t) {
-                Log.e("CryptoRankingResponse: ", t.getMessage());
+            public void onFailure(@NonNull Call<CryptoRankingPOJO> call, @NonNull Throwable t) {
+                Log.e("CryptoRankingResponse: ", Objects.requireNonNull(t.getMessage()));
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.example.trabajoapi.buscadores.buscadorNft;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class NftAdapter extends RecyclerView.Adapter<NftViewHolder>{
 
-    private List<NftPOJO> dataList;
+    private final List<NftPOJO> dataList;
 
     public NftAdapter(List<NftPOJO> dataList) {
         this.dataList = dataList;
@@ -26,6 +27,7 @@ public class NftAdapter extends RecyclerView.Adapter<NftViewHolder>{
         return new NftViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull NftViewHolder holder, int position) {
         NftPOJO data = dataList.get(position);
@@ -34,17 +36,11 @@ public class NftAdapter extends RecyclerView.Adapter<NftViewHolder>{
         holder.textViewContract.setText("Direccion del contrato:\n" + data.getContract_address());
         holder.textViewPlatform.setText("Plataforma:\n" + data.getAsset_platform_id());
 
-        holder.masDetalles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NftPOJO selectedNft = dataList.get(position);
-                Intent intent = new Intent(view.getContext(), NftDetalle.class);
-                intent.putExtra("nft_id", selectedNft.getNftId());
-                //Intent intent = new Intent(this, ResultadoExchange.class);
-                //intent.putExtra("ExchangeId", userInput);
-                //startActivity(intent);
-                view.getContext().startActivity(intent);
-            }
+        holder.masDetalles.setOnClickListener(view -> {
+            NftPOJO selectedNft = dataList.get(position);
+            Intent intent = new Intent(view.getContext(), NftDetalle.class);
+            intent.putExtra("nft_id", selectedNft.getNftId());
+            view.getContext().startActivity(intent);
         });
 
     }

@@ -8,9 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.trabajoapi.buscadores.BuscadorCrypto;
 import com.example.trabajoapi.buscadores.BuscadorExchanges;
 import com.example.trabajoapi.buscadores.buscadorNft.BuscadorNft;
@@ -38,15 +36,22 @@ public class Buscador extends AppCompatActivity {
                 String opcionSeleccionada = parentView.getItemAtPosition(position).toString();
 
                 // Redirige a la actividad correspondiente
-                if (opcionSeleccionada.equals("Crypto")) {
-                    Intent intent = new Intent(Buscador.this, BuscadorCrypto.class);
-                    startActivity(intent);
-                } else if (opcionSeleccionada.equals("Exchanges")) {
-                    Intent intent = new Intent(Buscador.this, BuscadorExchanges.class);
-                    startActivity(intent);
-                } else if (opcionSeleccionada.equals("NFTs")) {
-                    Intent intent = new Intent(Buscador.this, BuscadorNft.class);
-                    startActivity(intent);
+                switch (opcionSeleccionada) {
+                    case "Crypto": {
+                        Intent intent = new Intent(Buscador.this, BuscadorCrypto.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case "Exchanges": {
+                        Intent intent = new Intent(Buscador.this, BuscadorExchanges.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case "NFTs": {
+                        Intent intent = new Intent(Buscador.this, BuscadorNft.class);
+                        startActivity(intent);
+                        break;
+                    }
                 }
             }
 
@@ -62,12 +67,9 @@ public class Buscador extends AppCompatActivity {
         });
 
         Button botonBuscador = findViewById(R.id.boton_buscador);
-        botonBuscador.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Muestra un Toast cuando se pulsa el botón
-                Toast.makeText(Buscador.this, "Ya se encuentra en la pantalla del buscador", Toast.LENGTH_LONG).show();
-            }
+        botonBuscador.setOnClickListener(v -> {
+            // Muestra un Toast cuando se pulsa el botón
+            Toast.makeText(Buscador.this, "Ya se encuentra en la pantalla del buscador", Toast.LENGTH_LONG).show();
         });
         findViewById(R.id.boton_favoritos).setOnClickListener(view -> {
             Intent intent = new Intent(this, Favoritos.class);

@@ -4,4 +4,5 @@
         <item name="android:background">@color/tarjetas</item>
         <item name="android:textColor">@color/texto</item>
     </style>
+
 </resources>

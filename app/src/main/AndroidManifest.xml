@@ -96,6 +96,14 @@
             tools:ignore="UnusedAttribute"
 
             />
+        <activity
+            android:name=".DataStore.Preferencias"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            tools:ignore="UnusedAttribute"
+
+            />
+
 
 
 

@@ -1,5 +1,6 @@
 package com.example.trabajoapi.ranking;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.Log;
@@ -7,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,14 +15,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.trabajoapi.R;
 import com.example.trabajoapi.dataBase.DataBaseHelper;
-import com.example.trabajoapi.resultadosBuscadores.resultadoCrypto.ResultadoCrypto;
-
 import java.util.List;
 
 public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingViewHolder>{
 
 
-    private List<Coin> dataList;
+    private final List<Coin> dataList;
 
     private DataBaseHelper db;
 
@@ -38,6 +36,7 @@ public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingView
         return new CryptoRankingViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CryptoRankingViewHolder holder, int position) {
         Coin coin = dataList.get(position);
@@ -65,24 +64,21 @@ public class CryptoRankingAdapter extends RecyclerView.Adapter<CryptoRankingView
         }
 
         // Configurar el clic del botón
-        holder.boton_favorito.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Actualizar la base de datos y cambiar el color del botón y el texto en consecuencia
-                if (esFavorito[0]) {
-                    removeFromFavorites(item.getName(), view.getContext());
-                    holder.boton_favorito.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonFavorito)));
-                    holder.boton_favorito.setText("Añadir a favoritos");
-                    Toast.makeText(view.getContext(), "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
-                } else {
-                    addToFavorites(item.getName(), view.getContext());
-                    holder.boton_favorito.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonNoFavorito)));
-                    holder.boton_favorito.setText("Eliminar de favoritos");
-                    Toast.makeText(view.getContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
-                }
-                // Actualizar el estado de esFavorito después de hacer clic
-                esFavorito[0] = !esFavorito[0];
+        holder.boton_favorito.setOnClickListener(view -> {
+            // Actualizar la base de datos y cambiar el color del botón y el texto en consecuencia
+            if (esFavorito[0]) {
+                removeFromFavorites(item.getName(), view.getContext());
+                holder.boton_favorito.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonFavorito)));
+                holder.boton_favorito.setText("Añadir a favoritos");
+                Toast.makeText(view.getContext(), "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+            } else {
+                addToFavorites(item.getName(), view.getContext());
+                holder.boton_favorito.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonNoFavorito)));
+                holder.boton_favorito.setText("Eliminar de favoritos");
+                Toast.makeText(view.getContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
             }
+            // Actualizar el estado de esFavorito después de hacer clic
+            esFavorito[0] = !esFavorito[0];
         });
     }
 

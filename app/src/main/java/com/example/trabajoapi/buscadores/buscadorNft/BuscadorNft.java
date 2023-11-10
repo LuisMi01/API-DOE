@@ -1,8 +1,11 @@
 package com.example.trabajoapi.buscadores.buscadorNft;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +15,8 @@ import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
 import java.util.List;
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,8 +55,9 @@ public class BuscadorNft extends AppCompatActivity {
         NftApi apiService = APIClient.getRetrofit().create(NftApi.class);
         Call<List<NftPOJO>> call = apiService.getNfts();
         call.enqueue(new Callback<List<NftPOJO>>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
-            public void onResponse(Call<List<NftPOJO>> call, Response<List<NftPOJO>> response) {
+            public void onResponse(@NonNull Call<List<NftPOJO>> call, @NonNull Response<List<NftPOJO>> response) {
                 dataList = response.body();
                 adapter = new NftAdapter(dataList);
                 recyclerView.setAdapter(adapter);
@@ -59,8 +65,8 @@ public class BuscadorNft extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<NftPOJO>> call, Throwable t) {
-                Log.d("NftApi", t.getMessage());
+            public void onFailure(@NonNull Call<List<NftPOJO>> call, @NonNull Throwable t) {
+                Log.d("NftApi", Objects.requireNonNull(t.getMessage()));
             }
         });
     }

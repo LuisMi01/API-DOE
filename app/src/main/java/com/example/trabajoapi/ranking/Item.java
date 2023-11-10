@@ -2,11 +2,11 @@ package com.example.trabajoapi.ranking;
 
 public class Item {
 
-    private String name;
-    private int score;
-    private double price_btc;
+    private final String name;
+    private final int score;
+    private final double price_btc;
 
-    private String small;
+    private final String small;
 
     public Item(String name, int score, double price_btc, String small) {
         this.name = name;

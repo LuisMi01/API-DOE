@@ -1,12 +1,12 @@
 package com.example.trabajoapi.resultadosBuscadores.resultadosExchange;
 
 public class ExchangeBuscadorPOJO {
-    private String name;
-    private String year_stablished;
-    private String country;
-    private String url;
-    private String image;
-    private String description;
+    private final String name;
+    private final String year_stablished;
+    private final String country;
+    private final String url;
+    private final String image;
+    private final String description;
 
     public ExchangeBuscadorPOJO(String name, String year_stablished, String country, String url, String image, String description) {
         this.name = name;

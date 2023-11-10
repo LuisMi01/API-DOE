@@ -1,7 +1,5 @@
 package com.example.trabajoapi.ranking;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 
 public class CryptoRankingPOJO {

@@ -102,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        android:textSize="15dp"
         android:backgroundTint="@color/rojo"
         android:text="Borrar Favoritos"
         app:layout_constraintBottom_toTopOf="@+id/layout_botones"

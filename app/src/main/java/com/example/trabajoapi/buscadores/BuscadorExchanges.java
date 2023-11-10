@@ -11,6 +11,8 @@ import com.example.trabajoapi.R;
 import com.example.trabajoapi.resultadosBuscadores.resultadosExchange.ResultadoExchange;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
 public class BuscadorExchanges extends AppCompatActivity{
 
             @Override
@@ -35,7 +37,7 @@ public class BuscadorExchanges extends AppCompatActivity{
 
                 TextInputEditText texto = findViewById(R.id.input_buscador_exchanges);
                 findViewById(R.id.boton_buscador_exchanges).setOnClickListener(view -> {
-                    String userInput = texto.getText().toString();
+                    String userInput = Objects.requireNonNull(texto.getText()).toString();
                     // Verifica si el campo de entrada no está vacío antes de continuar
                     if (!userInput.isEmpty()) {
                         // Crea una nueva intención y pasa el valor de entrada del usuario a la actividad ResultadoCrypto

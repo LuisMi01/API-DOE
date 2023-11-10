@@ -2,14 +2,13 @@ package com.example.trabajoapi.resultadosBuscadores.resultadoNft.nftDetalle;
 
 public class NftDetallePOJO {
 
-    private String name;
-    private String asset_platform_id;
-    private String symbol;
-    private String contract_address;
-    private String description;
-
-    private Imagen image;
-    private FloorPrice floor_price;
+    private final String name;
+    private final String asset_platform_id;
+    private final String symbol;
+    private final String contract_address;
+    private final String description;
+    private final Imagen image;
+    private final FloorPrice floor_price;
 
     public NftDetallePOJO(String name, String asset_platform_id, String symbol, String contract_address, String description, Imagen image, FloorPrice floor_price) {
         this.name = name;

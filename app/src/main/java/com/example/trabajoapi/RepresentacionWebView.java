@@ -5,18 +5,16 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.trabajoapi.dataBase.Favoritos;
 
 public class RepresentacionWebView extends AppCompatActivity {
-    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plantilla_web);
 
-        webView = findViewById(R.id.web_view);
+        WebView webView = findViewById(R.id.web_view);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);

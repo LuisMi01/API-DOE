@@ -1,27 +1,25 @@
 package com.example.trabajoapi;
 
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.ranking.Ranking;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private TextView ping;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button botonBuscador = findViewById(R.id.boton_home);
-        botonBuscador.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Ya se encuentra en la pantalla Home", Toast.LENGTH_LONG).show();
-            }
-        });
+        botonBuscador.setOnClickListener(v -> Toast.makeText(MainActivity.this, "Ya se encuentra en la pantalla Home", Toast.LENGTH_LONG).show());
 
         findViewById(R.id.boton_buscador).setOnClickListener(view -> {
             Intent intent = new Intent(this, Buscador.class);
@@ -58,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-
         fetchResultadoCrypto();
 
 
@@ -71,8 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
         Call<MainActivityPOJO> call = apiService.getPing();
         call.enqueue(new Callback<MainActivityPOJO>() {
+            @SuppressLint("SetTextI18n")
             @Override
-            public void onResponse(Call<MainActivityPOJO> call, Response<MainActivityPOJO> response) {
+            public void onResponse(@NonNull Call<MainActivityPOJO> call, @NonNull Response<MainActivityPOJO> response) {
                 if (response.isSuccessful()) {
                     MainActivityPOJO pokemon = response.body();
                     if (pokemon != null) {
@@ -84,12 +77,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
-            public void onFailure(Call<MainActivityPOJO> call, Throwable t) {
+            public void onFailure(@NonNull Call<MainActivityPOJO> call, @NonNull Throwable t) {
                 ping.setText("Error en la solicitud: " + t.getMessage());
             }
         });
     }
 
-
 }
+
+

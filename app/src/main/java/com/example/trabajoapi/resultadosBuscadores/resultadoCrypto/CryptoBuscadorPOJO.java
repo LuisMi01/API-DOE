@@ -1,10 +1,5 @@
 package com.example.trabajoapi.resultadosBuscadores.resultadoCrypto;
 
-
-import android.widget.TextView;
-
-import java.util.Map;
-
 public class CryptoBuscadorPOJO {
 
 

@@ -74,7 +74,7 @@
         android:id="@+id/spinner"
         android:layout_width="330dp"
         android:layout_height="50dp"
-        android:background="#564CAF50"
+        android:background="#5C007BFF"
         android:entries="@array/opciones_spinner"
         android:spinnerMode="dialog"
         android:theme="@style/SpinnerItemStyle"

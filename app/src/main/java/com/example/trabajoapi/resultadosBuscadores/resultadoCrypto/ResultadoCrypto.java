@@ -1,8 +1,9 @@
 package com.example.trabajoapi.resultadosBuscadores.resultadoCrypto;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -10,11 +11,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.trabajoapi.APIClient;
 import com.example.trabajoapi.Buscador;
@@ -23,7 +22,7 @@ import com.example.trabajoapi.dataBase.Favoritos;
 import com.example.trabajoapi.MainActivity;
 import com.example.trabajoapi.R;
 import com.example.trabajoapi.RepresentacionWebView;
-
+import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,7 +37,7 @@ public class ResultadoCrypto extends AppCompatActivity {
     private ImageView imagenCrypto;
     private CryptoApi apiService;
     private CryptoBuscadorPOJO currentCrypto;
-    private boolean isFavorite = false;
+    private final boolean isFavorite = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,77 +78,77 @@ public class ResultadoCrypto extends AppCompatActivity {
         String cryptoId = getIntent().getStringExtra("cryptoId");
         Call<CryptoBuscadorPOJO> call = apiService.detallesMonedaBuscador(cryptoId);
         call.enqueue(new Callback<CryptoBuscadorPOJO>() {
+            @SuppressLint("SetTextI18n")
             @Override
-            public void onResponse(Call<CryptoBuscadorPOJO> call, Response<CryptoBuscadorPOJO> response) {
+            public void onResponse(@NonNull Call<CryptoBuscadorPOJO> call, @NonNull Response<CryptoBuscadorPOJO> response) {
                 if (response.isSuccessful()) {
                     CryptoBuscadorPOJO datosCrypto = response.body();
+                    assert datosCrypto != null;
                     DescripcionCrypto description = datosCrypto.getDescription();
                     ValorMercadoCrypto market_data = datosCrypto.getMarket_data();
                     CurrentPrice current_price = market_data.getCurrent_price();
                     WebBuscadorCrypto links = datosCrypto.getLinks();
                     ImagenBuscadorCrypto image = datosCrypto.getImage();
 
-                    if (datosCrypto != null) {
-                        nombbreCrypto.setText(datosCrypto.getName());
-                        fechaCreacion.setText("Fecha de creacion:\n" + datosCrypto.getGenesis_date());
-                        descripcionCrypto.setText("Descripcion:\n" + description.getEn());
-                        precioCrypto.setText("Valor de la moneda:\n" + current_price.getEur() + " €");
-                        if (links != null) {
-                            webCrypto.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    webCrypto.setText("Pagina web");
-                                    Intent intent = new Intent(ResultadoCrypto.this, RepresentacionWebView.class);
-                                    intent.putExtra("url", links.getHomepage().get(0));
-                                    startActivity(intent);
-                                }
-                            });
-                        }
-                        if (image != null) {
-                            String urlImagen = image.getSmall();
-                            Glide.with(ResultadoCrypto.this).load(urlImagen).override(350, 350).into(imagenCrypto);
-                        }
-
-                        final boolean[] esFavorito = {isFavorite(datosCrypto.getName(), ResultadoCrypto.this)};
-
-                        // Cambiar el fondo del botón y el texto en consecuencia
-                        if (esFavorito[0]) {
-                            botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(ResultadoCrypto.this, R.color.colorBotonNoFavorito)));
-                            botonFavoritos.setText("Eliminar de favoritos");
-                        } else {
-                            botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(ResultadoCrypto.this, R.color.colorBotonFavorito)));
-                            botonFavoritos.setText("Añadir a favoritos");
-                        }
-
-                        // Configurar el clic del botón
-                        botonFavoritos.setOnClickListener(new View.OnClickListener() {
+                    nombbreCrypto.setText(datosCrypto.getName());
+                    fechaCreacion.setText("Fecha de creacion:\n" + datosCrypto.getGenesis_date());
+                    descripcionCrypto.setText("Descripcion:\n" + description.getEn());
+                    precioCrypto.setText("Valor de la moneda:\n" + current_price.getEur() + " €");
+                    if (links != null) {
+                        webCrypto.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                // Actualizar la base de datos y cambiar el color del botón y el texto en consecuencia
-                                if (esFavorito[0]) {
-                                    removeFromFavorites(datosCrypto.getName(), view.getContext());
-                                    botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonFavorito)));
-                                    botonFavoritos.setText("Añadir a favoritos");
-                                    Toast.makeText(view.getContext(), "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    addToFavorites(datosCrypto.getName(), view.getContext());
-                                    botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonNoFavorito)));
-                                    botonFavoritos.setText("Eliminar de favoritos");
-                                    Toast.makeText(view.getContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
-                                }
-                                // Actualizar el estado de esFavorito después de hacer clic
-                                esFavorito[0] = !esFavorito[0];
+                                webCrypto.setText("Pagina web");
+                                Intent intent = new Intent(ResultadoCrypto.this, RepresentacionWebView.class);
+                                intent.putExtra("url", links.getHomepage().get(0));
+                                startActivity(intent);
                             }
                         });
                     }
+                    if (image != null) {
+                        String urlImagen = image.getSmall();
+                        Glide.with(ResultadoCrypto.this).load(urlImagen).override(350, 350).into(imagenCrypto);
+                    }
+
+                    final boolean[] esFavorito = {isFavorite(datosCrypto.getName(), ResultadoCrypto.this)};
+
+                    // Cambiar el fondo del botón y el texto en consecuencia
+                    if (esFavorito[0]) {
+                        botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(ResultadoCrypto.this, R.color.colorBotonNoFavorito)));
+                        botonFavoritos.setText("Eliminar de favoritos");
+                    } else {
+                        botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(ResultadoCrypto.this, R.color.colorBotonFavorito)));
+                        botonFavoritos.setText("Añadir a favoritos");
+                    }
+
+                    // Configurar el clic del botón
+                    botonFavoritos.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // Actualizar la base de datos y cambiar el color del botón y el texto en consecuencia
+                            if (esFavorito[0]) {
+                                removeFromFavorites(datosCrypto.getName(), view.getContext());
+                                botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonFavorito)));
+                                botonFavoritos.setText("Añadir a favoritos");
+                                Toast.makeText(view.getContext(), "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+                            } else {
+                                addToFavorites(datosCrypto.getName(), view.getContext());
+                                botonFavoritos.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.colorBotonNoFavorito)));
+                                botonFavoritos.setText("Eliminar de favoritos");
+                                Toast.makeText(view.getContext(), "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                            }
+                            // Actualizar el estado de esFavorito después de hacer clic
+                            esFavorito[0] = !esFavorito[0];
+                        }
+                    });
                 } else {
                     nombbreCrypto.setText("Error en la solicitud.");
                 }
             }
 
             @Override
-            public void onFailure(Call<CryptoBuscadorPOJO> call, Throwable t) {
-                Log.e("ERROR", t.getMessage());
+            public void onFailure(@NonNull Call<CryptoBuscadorPOJO> call, @NonNull Throwable t) {
+                Log.e("ERROR", Objects.requireNonNull(t.getMessage()));
             }
         });
 

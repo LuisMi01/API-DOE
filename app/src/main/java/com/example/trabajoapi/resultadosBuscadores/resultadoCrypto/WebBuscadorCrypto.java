@@ -3,7 +3,7 @@ package com.example.trabajoapi.resultadosBuscadores.resultadoCrypto;
 import java.util.List;
 
 public class WebBuscadorCrypto {
-    private List<String> homepage;
+    private final List<String> homepage;
 
     public WebBuscadorCrypto(List<String> homepage) {
         this.homepage = homepage;

@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabajoapi.R;
-import com.example.trabajoapi.buscadores.buscadorNft.NftViewHolder;
 import com.example.trabajoapi.resultadosBuscadores.resultadoCrypto.ResultadoCrypto;
-
 import java.util.List;
 
 public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosViewHolder>{
-    private List<FavoritosPOJO> favoritosList;
+    private final List<FavoritosPOJO> favoritosList;
 
     public FavoritosAdapter(List<FavoritosPOJO> favoritosList) {
         this.favoritosList = favoritosList;
@@ -29,13 +27,10 @@ public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosViewHolder>{
     public void onBindViewHolder(@NonNull FavoritosViewHolder holder, int position) {
         FavoritosPOJO favoritos = favoritosList.get(position);
         holder.nombreBaseDatos.setText(favoritos.getName());
-        holder.botonBaseDatos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ResultadoCrypto.class);
-                intent.putExtra("cryptoId", favoritos.getName().toLowerCase());
-                view.getContext().startActivity(intent);
-            }
+        holder.botonBaseDatos.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), ResultadoCrypto.class);
+            intent.putExtra("cryptoId", favoritos.getName().toLowerCase());
+            view.getContext().startActivity(intent);
         });
     }
 
